@@ -286,6 +286,7 @@ html, body {
 @media only screen and (max-width: 600px) {
     .sidebar-button-item {
         order: 1;
+        margin-left: 2%;
    }
     .filter-list-item{
         order:0;
@@ -320,6 +321,9 @@ html, body {
 
 .cards-items{
     display: block;
+    flex-shrink: 1;
+    flex-basis: 0;
+  
 }
 
 .dropdown-menu-item {
@@ -338,7 +342,7 @@ html, body {
 }
 
 table{
-    width: 350px;
+    width: 300px;
     
 }
 
