@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
-    
+
+
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="./css/style.css">
@@ -41,21 +41,29 @@
                     </select>
                 </div>
                 <div>
-                    <h1 class="title-menu">Titolo del menu</h1>
+                    <h1 class="title-menu"></h1>
                 </div>
                 <div>
                     <p class="description-menu">
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-                        ut
-                        labore et
+                        Lorem ipsum dolor sit amet,
 
                     </p>
                 </div>
             </div>
         </div>
 
+        <!-- cambia il il titolo del menu in base alla selezione -->
+        <script>
+            $(document).ready(function () {
+                $('.seleziona-un-altro-menu').change(function () {
+                    var selectedOption = $(this).children('option:selected').text();
+                    $('.title-menu').text(selectedOption);
+                });
+            });    
+        </script>
+
         <div class="course-buttons-container">
-            
+
             <div class="course-buttons1">
                 <div class="logo-course-container">
                     <img class="logo-course-img" src="./img/path-65-1@1x.png" alt="" srcset="">
@@ -97,9 +105,18 @@
                 </div>
             </div>
 
-            
+
         </div>
 
+        <!-- cambia il titotlo del course in base al link cliccato -->
+        <script>
+            $(document).ready(function () {
+                $('.course-buttons1').on('click', function () {
+                    var selectedCourse = $(this).find('.title-course').text();
+                    $('.course-title-text h3').text(selectedCourse);
+                });
+            });
+        </script>
     </div>
     <BR>
     <div class="labels-icons-container">
@@ -124,15 +141,15 @@
         </div>
     </div>
     <div class="course-title-container">
-        <!-- <div class="course-title-line" style="flex-grow: 4">
+        <div class="course-title-line" style="flex-grow: 4">
             <div><img src="./img/line-7-1@1x.png" alt=""></div>
-        </div> -->
+        </div>
         <div class="course-title-text" style="flex-grow: 2">
             <h3>Primi</h3>
         </div>
-        <!-- <div class="course-title-line" style="flex-grow: 4">
+        <div class="course-title-line" style="flex-grow: 4">
             <div><img src="./img/line-7-1@1x.png" alt=""></div>
-        </div> -->
+        </div>
     </div>
 
     <div class="sidebar-button-container">
@@ -197,12 +214,12 @@
 
     <!-- clear-all -->
     <script>
-        $(document).ready(function() {
-  $('.remove-all').on('click', function() {
-    $('input[type="checkbox"]').prop('checked', false);
-    $('.element-to-hide').hide();
-  });
-});
+        $(document).ready(function () {
+            $('.remove-all').on('click', function () {
+                $('input[type="checkbox"]').prop('checked', false);
+                $('.element-to-hide').hide();
+            });
+        });
     </script>
 
     <!-- sincronizza i due checkbox -->
@@ -235,9 +252,11 @@
     <script>
 
         $(document).ready(function () {
+            
             $('input[type="checkbox"]').click(function () {
 
                 var id = $(this).attr('id');
+                
                 if ($(this).is(":checked")) {
                     $('.filter-list-item:contains(' + id + ')').show();
                 } else {
@@ -253,7 +272,7 @@
 
     <div class="dropdown-cards-container1">
         <div class="sidebar">
-            <table >
+            <table>
 
                 <tr>
                     <td><input type="checkbox" id="Celery">

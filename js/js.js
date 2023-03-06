@@ -41,9 +41,9 @@ buttons.on("click", function() {
 
 
 // sidebar toggle
-$(".sidebar-button-item").click(function(){
-  $(".sidebar").fadeToggle();
-
-});
+$(".sidebar").hide();
+  $(".sidebar-button-item").click(function() {
+    $(".sidebar").fadeToggle();
+  });
   });
   
