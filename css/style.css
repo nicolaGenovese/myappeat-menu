@@ -128,20 +128,13 @@ html, body {
     letter-spacing: 0;
 }
 .course-buttons-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
+    background-color: transparent;
+    overflow: auto;
+    white-space: nowrap;
+    text-align: center;
 }
 .course-buttons-container>div {
-    display: block;
-    flex-grow: 0;
-    flex-shrink: 1;
-    flex-basis: auto;
-    align-self: auto;
-    order: 0;
+    display: inline-block;
     background-color: var(--link-water);
     border-radius: 20px;
     cursor: pointer;
@@ -276,6 +269,8 @@ html, body {
     padding: 5px; 
     
 }
+
+
 .element-to-hide{
     display: none;
 }
@@ -357,7 +352,7 @@ td {
     font-style: normal;
     font-weight: 400;
     text-align: left;
-    
+    line-height: 1px;
 }
 tr{
     height: 50px;
