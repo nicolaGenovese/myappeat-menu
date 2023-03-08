@@ -399,11 +399,12 @@ tr{
     table{
         background-color: var(--link-water);
         padding: 4%;
-        border-radius: 5%;
+        border-radius: 10px;
+        width: 300px;
    }
    .sidebar{
     border: 2px solid var(--regent-gray);
-    border-radius: 5%;
+    border-radius: 10px;
    }
     .sidebar ul li{
         color: var(--white);
@@ -431,6 +432,13 @@ tr{
    }
 }
 
+@media only screen and (max-width: 540px) {
+
+    table{
+        width: 420px;
+   }
+}
+
 @media only screen and (max-width: 518px) {
 
     .cards-items{
@@ -442,6 +450,9 @@ tr{
     .dropdown-cards-container{
         margin-left: -10%;
     }
+    table{
+        width: 370px;
+   }
 }
 @media only screen and (max-width: 412px) {
     .dropdown-cards-container{
@@ -452,21 +463,33 @@ tr{
     .dropdown-cards-container{
         margin-left: -14%;
     }
+    table{
+        width: 340px;
+   }
 }
 @media only screen and (max-width: 390px) {
     .dropdown-cards-container{
         margin-left: -14%;
     }
+    table{
+        width: 340px;
+   }
 }
 @media only screen and (max-width: 375px) {
     .dropdown-cards-container{
         margin-left: -18%;
     }
+    table{
+        width: 340px;
+   }
 }
 @media only screen and (max-width: 360px) {
     .dropdown-cards-container{
         margin-left: -20%;
     }
+    table{
+        width: 325px;
+   }
 }
 @media only screen and (max-width: 280px) {
     .cards-items{
@@ -476,6 +499,9 @@ tr{
     .dropdown-cards-container{
         margin-left: -40%;
     }
+    table{
+        width: 250px;
+   }
 }
 
 
