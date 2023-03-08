@@ -390,6 +390,7 @@ tr{
     .dropdown-cards-container1 {
         position: relative;
         z-index: 1;
+        padding-left: 0;
    }
     .dropdown-cards-container{
         position: absolute;
@@ -400,7 +401,7 @@ tr{
         background-color: var(--link-water);
         padding: 4%;
         border-radius: 10px;
-        width: 300px;
+        width: 500px;
    }
    .sidebar{
     border: 2px solid var(--regent-gray);
