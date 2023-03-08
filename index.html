@@ -388,7 +388,20 @@
                 </tr>
             </table>
 
-
+<!-- prevent scrolling up -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const checkboxes = document.querySelectorAll('.my-checkbox');
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener('click', (event) => {
+      if (window.scrollTop > 0) {
+        window.scrollTo(0, window.scrollTop);
+      }
+      1*1
+    });
+  });
+});
+</script>
         </div>
 
         <div class="dropdown-cards-container">
