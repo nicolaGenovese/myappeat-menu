@@ -444,15 +444,15 @@ tr{
 
     .cards-items{
         
-        transform: scale(0.7,0.7);
+        transform: scale(0.8,0.8);
     }
 }
 @media only screen and (max-width: 414px) {
     .dropdown-cards-container{
-        margin-left: -10%;
+        margin-left: -11%;
     }
     table{
-        width: 370px;
+        width: 290px;
    }
 }
 @media only screen and (max-width: 412px) {
@@ -465,15 +465,15 @@ tr{
         margin-left: -14%;
     }
     table{
-        width: 340px;
+        width: 290px;
    }
 }
 @media only screen and (max-width: 390px) {
     .dropdown-cards-container{
-        margin-left: -14%;
+        margin-left: -15%;
     }
     table{
-        width: 340px;
+        width: 290px;
    }
 }
 @media only screen and (max-width: 375px) {
@@ -481,7 +481,7 @@ tr{
         margin-left: -18%;
     }
     table{
-        width: 340px;
+        width: 280px;
    }
 }
 @media only screen and (max-width: 360px) {
@@ -489,7 +489,7 @@ tr{
         margin-left: -20%;
     }
     table{
-        width: 325px;
+        width: 280px;
    }
 }
 @media only screen and (max-width: 280px) {
