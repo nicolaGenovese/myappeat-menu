@@ -365,14 +365,12 @@ html, body {
 }
 
 table{
-    width: 300px;
+    width: 280px;
     
 }
 
 td {
     letter-spacing: 0;
-    
-    
     white-space: nowrap;
     color: var(--regent-gray);
     font-family: var(--font-family-pt_sans);
@@ -401,7 +399,7 @@ tr{
         background-color: var(--link-water);
         padding: 4%;
         border-radius: 10px;
-        width: 500px;
+        width: 360px;
    }
    .sidebar{
     border: 2px solid var(--regent-gray);
@@ -436,7 +434,7 @@ tr{
 @media only screen and (max-width: 540px) {
 
     table{
-        width: 420px;
+        width: 365px;
    }
 }
 
