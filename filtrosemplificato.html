@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Import MixItUp and MultiFilter from a CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/mixitup@3.3.1/dist/mixitup.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/multifilter@0.5.0/dist/multifilter.min.js"></script>
+    <!-- Import flickity from a CDN -->
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/styleguide.css">
+    <link rel="stylesheet" href="./css/sidebar.css">
+    <link rel="stylesheet" href="./css/card.css">
+    <link rel="stylesheet" href="./css/checkbox.css">
+    <title>Document</title>
+</head>
+<body>
+    
+
+<!-- filtro 1 -->
+<select class="seleziona-un-altro-menu ptsans-bold-regent-gray-24px">
+    <option value="" disabled="" selected="" hidden="">Select a different Menu</option>
+    <option id="monday" value="monday">Monday</option>
+    <option id="lunch" value="lunch">Lunch</option>
+    <option id="dinner" value="dinner">Dinner</option>
+    <option id="saturday" value="saturday">Saturday</option>
+</select>
+<!-- filtro 2 -->
+<div class="course-buttons-container" class="carousel"
+            data-flickity='{ "freeScroll": true, "contain": true, "prevNextButtons": false, "pageDots": false, "autoPlay": false}'>
+
+            <a id="starter" href="#" class="course-button">
+                <span class="course-icon">
+                    <img src="./img/main-dish.png" alt="Logo">
+                </span>
+                <span class="course-text ptsans-bold-regent-gray-24px">Starters</span>
+            </a>
+
+            <a id="main" href="#" class="course-button">
+                <span class="course-icon">
+                    <img src="./img/main-dish.png" alt="Logo">
+                </span>
+                <span class="course-text ptsans-bold-regent-gray-24px ">Mains</span>
+            </a>
+            <a id="side" href="#" class="course-button">
+                <span class="course-icon">
+                    <img src="./img/side.png" alt="Logo">
+                </span>
+                <span class="course-text ptsans-bold-regent-gray-24px">Sides</span>
+            </a>
+            <a id="salad" href="#" class="course-button">
+                <span class="course-icon">
+                    <img src="./img/salad.png" alt="Logo">
+                </span>
+                <span class="course-text ptsans-bold-regent-gray-24px">Salads</span>
+            </a>
+
+            <a id="dessert" href="#" class="course-button">
+                <span class="course-icon">
+                    <img src="./img/dessert.png" alt="Logo">
+                </span>
+                <span class="course-text ptsans-bold-regent-gray-24px">Desserts</span>
+            </a>
+            <a id="drink" href="#" class="course-button">
+                <span class="course-icon">
+                    <img src="./img/cheers.png" alt="Logo">
+                </span>
+                <span class="course-text ptsans-bold-regent-gray-24px">Drinks</span>
+            </a>
+        </div>
+<!-- filtro 3 -->
+<div class="button-container">
+    <a id="vegan" href="#" class="button"><span class="icon-vegan"></span></a>
+    <a id="vegetarian" href="#" class="button"><span class="icon-vegetarian"></span></a>
+    <a id="meat" href="#" class="button"><span class="icon-meat"></span></a>
+    
+</div>
+<!-- filtro 4 -->
+<div class="dropdown-cards-container1">
+    <div class="sidebar">
+        <table>
+
+            <tr>
+                <td><input type="checkbox" id="celery">
+                    <label for="celery"></label>
+                </td>
+                <td>Celery</td>
+
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="gluten">
+                    <label for="gluten"></label>
+                </td>
+                <td>Gluten</td>
+
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="crustaceans">
+                    <label for="crustaceans"></label>
+                </td>
+                <td>Crustaceans</td>
+
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="eggs">
+                    <label for="eggs"></label>
+                </td>
+                <td>Eggs</td>
+
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="fish">
+                    <label for="fish"></label>
+                </td>
+                <td>Fish</td>
+
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="lupin">
+                    <label for="lupin"></label>
+                </td>
+                <td>Lupin</td>
+
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="milk">
+                    <label for="milk"></label>
+                </td>
+                <td>Milk</td>
+
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="molluscs">
+                    <label for="molluscs"></label>
+                </td>
+                <td>Molluscs</td>
+
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="mustard">
+                    <label for="mustard"></label>
+                </td>
+                <td>Mustard</td>
+
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="nuts">
+                    <label for="nuts"></label>
+                </td>
+                <td>Nuts</td>
+
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="peanuts">
+                    <label for="peanuts"></label>
+                </td>
+                <td>Peanuts</td>
+
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="sesame-seeds">
+                    <label for="sesame-seeds"></label>
+                </td>
+                <td>Sesame seeds</td>
+
+            </tr>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="soya">
+                    <label for="soya"></label>
+                </td>
+                <td>Soya</td>
+
+            </tr>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="sulphur-dioxide">
+                    <label for="sulphur-dioxide"></label>
+                </td>
+                <td>Sulphur dioxide</td>
+
+            </tr>
+        </table>
+
+    </div>
+<!-- cards da filtrare -->
+    <div class="dropdown-cards-container">
+        <div class="cards-items monday salad meat Gluten">monday main vegan Gluten</div>
+        <div class="cards-items dinner starter vegetarian Celery">dinner starter vegetarian Celery</div>
+        <div class="cards-items saturday side vegan Eggs">saturday side vegan Eggs</div>
+        <div class="cards-items monday main vegetarian Fish">monday main vegetarian Fish</div>
+    </div>
+
+
+    <script>
+
+//filtro menu
+$(document).ready(function() {
+    var filter = ["menu","course","diet","spicy","calory",[]];
+  $('.seleziona-un-altro-menu').change(function() {
+    var selectedValue = $(this).val(); // recupera il valore selezionato dall'utente
+    filter[0] = selectedValue; // aggiorna il valore "menu" nell'array filter
+    alert(filter); // visualizza l'array filter aggiornato nella console
+  });
+
+  $('.course-buttons-container').on('click', '.course-button', function() {
+    var selectedCourse = $(this).attr('id'); // recupera l'id del pulsante selezionato
+    filter[1] = selectedCourse; // aggiorna il valore "course" nell'array filter
+    alert(filter); // visualizza l'array filter aggiornato nella console
+  });
+
+  $('.button-container').on('click', '.button', function() {
+    var selectedDiet = $(this).attr('id'); // recupera l'id del pulsante selezionato
+    filter[2] = selectedDiet; // aggiorna il valore "diet" nell'array filter
+    alert(filter); // visualizza l'array filter aggiornato nella console
+  });
+
+  $('input[type="checkbox"]').change(function() {
+    var allergeni = [];
+    $('input[type="checkbox"]:checked').each(function() {
+      allergeni.push($(this).attr('id'));
+    });
+    filter[5] = allergeni;
+    alert(filter);
+  });
+
+  const showClasses = filter.slice(0, 5);
+  const hideClasses = filter[5];
+
+  // Show the cards that have a class in the showClasses array
+  $(`.card.${showClasses.join(', .card.')}`).show();
+
+  // Hide the cards that have a class in the hideClasses array
+  $(`.card.${hideClasses.join(', .card.')}`).hide();
+
+});
+    </script>
+
+</body>
