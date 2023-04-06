@@ -1,4 +1,4 @@
-label {
+.checkbox-style {
     display: inline-block;
     width: 25px;
     height: 25px;
@@ -7,7 +7,7 @@ label {
     position: relative;
     
   }
-  label:before {
+  .checkbox-style:before {
     content: "";
     display: block;
     width: 15px;
@@ -20,7 +20,7 @@ label {
     transform: translate(-50%, -50%);
     z-index: 1;
   }
-  label:after {
+  .checkbox-style:after {
     content: "";
     display: block;
     width: 20px;
@@ -39,7 +39,7 @@ label {
     left: -9999px;
     
   }
-  input[type="checkbox"]:checked + label:after {
+  input[type="checkbox"]:checked + .checkbox-style:after {
     content: "X";
     font-family: arial;
     font-size: 20px;
@@ -59,59 +59,59 @@ label {
         <ul>
             <li>
                 <input type="checkbox" id="myCheckbox1">
-                <label for="myCheckbox1">Intolleranza</label>
+                <.checkbox-style for="myCheckbox1">Intolleranza</.checkbox-style>
             </li>
             <li>
                 <input type="checkbox" id="myCheckbox2">
-                <label for="myCheckbox2">Intolleranza</label>
+                <.checkbox-style for="myCheckbox2">Intolleranza</.checkbox-style>
             </li>
             <li>
                 <input type="checkbox" id="myCheckbox3">
-                <label for="myCheckbox3">Intolleranza</label>
+                <.checkbox-style for="myCheckbox3">Intolleranza</.checkbox-style>
             </li>
             <li>
                 <input type="checkbox" id="myCheckbox4">
-                <label for="myCheckbox4">Intolleranza</label>
+                <.checkbox-style for="myCheckbox4">Intolleranza</.checkbox-style>
             </li>
             <li>
                 <input type="checkbox" id="myCheckbox5">
-                <label for="myCheckbox5">Intolleranza</label>
+                <.checkbox-style for="myCheckbox5">Intolleranza</.checkbox-style>
             </li>
             <li>
                 <input type="checkbox" id="myCheckbox6">
-                <label for="myCheckbox6">Intolleranza</label>
+                <.checkbox-style for="myCheckbox6">Intolleranza</.checkbox-style>
             </li>
             <li>
                 <input type="checkbox" id="myCheckbox7">
-                <label for="myCheckbox7">Intolleranza</label>
+                <.checkbox-style for="myCheckbox7">Intolleranza</.checkbox-style>
             </li>
             <li>
                 <input type="checkbox" id="myCheckbox8">
-                <label for="myCheckbox8">Intolleranza</label>
+                <.checkbox-style for="myCheckbox8">Intolleranza</.checkbox-style>
             </li>
             <li>
                 <input type="checkbox" id="myCheckbox9">
-                <label for="myCheckbox9">Intolleranza</label>
+                <.checkbox-style for="myCheckbox9">Intolleranza</.checkbox-style>
             </li>
             <li>
                 <input type="checkbox" id="myCheckbox10">
-                <label for="myCheckbox10">Intolleranza</label>
+                <.checkbox-style for="myCheckbox10">Intolleranza</.checkbox-style>
             </li>
             <li>
                 <input type="checkbox" id="myCheckbox11">
-                <label for="myCheckbox11">Intolleranza</label>
+                <.checkbox-style for="myCheckbox11">Intolleranza</.checkbox-style>
             </li>
             <li>
                 <input type="checkbox" id="myCheckbox12">
-                <label for="myCheckbox12">Intolleranza</label>
+                <.checkbox-style for="myCheckbox12">Intolleranza</.checkbox-style>
             </li>
             <li>
                 <input type="checkbox" id="myCheckbox13">
-                <label for="myCheckbox13">Intolleranza</label>
+                <.checkbox-style for="myCheckbox13">Intolleranza</.checkbox-style>
             </li>
             <li>
                 <input type="checkbox" id="myCheckbox14">
-                <label for="myCheckbox14">Intolleranza</label>
+                <.checkbox-style for="myCheckbox14">Intolleranza</.checkbox-style>
             </li>
         </ul>
     </div>

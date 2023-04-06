@@ -295,6 +295,9 @@ a {
     text-underline-offset: 0.3em;
     text-decoration-color: #87888B;
 }
+
+
+
 .course-title-container {
     display: flex;
     flex-direction: row;
@@ -403,7 +406,7 @@ a {
     justify-content: space-around;
     align-items: flex-start;
     align-content: center;
-    /* border: 1px solid black; */
+    
 
     margin-left: 5%;
     margin-right: 5%;
@@ -418,10 +421,10 @@ a {
     justify-content: space-around;
     align-items: center;
     align-content: center;
-    /* border: 1px solid black; */
+    
     margin-top: 2%;
     margin-bottom: 2%;
-
+    /* width: 100%; */
 }
 
 .cards-items {
@@ -433,6 +436,10 @@ a {
     order: 0;
     padding: 2% 1% 1% 1%;
     margin-bottom: 4%;
+    /* border: 1px solid black;
+    width: 200px;
+    height: 200px; */
+    /* transform: scale(0.8, 0.8); */
 }
 
 

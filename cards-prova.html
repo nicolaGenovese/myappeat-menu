@@ -1,0 +1,1917 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Import MixItUp and MultiFilter from a CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/mixitup@3.3.1/dist/mixitup.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/multifilter@0.5.0/dist/multifilter.min.js"></script>
+    <!-- Import flickity from a CDN -->
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/styleguide.css">
+    <link rel="stylesheet" href="./css/sidebar.css">
+    <link rel="stylesheet" href="./css/card.css">
+    <link rel="stylesheet" href="./css/checkbox.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="header">
+        <div class="banner-container">
+            <div class="banner-logo">
+                <div class="logo"></div>
+            </div>
+        </div>
+
+        <div class="menu-selector-container">
+            <div class="menu-logo">
+                <div class="rectangle-logo"></div>
+            </div>
+            <div class="menu-selector">
+                <div>
+                    <select class="seleziona-un-altro-menu ptsans-bold-regent-gray-24px">
+                        <option value="" disabled="" selected="" hidden="">Select a different Menu</option>
+                        <option id="monday" value="monday">Monday</option>
+                        <option id="lunch" value="lunch">Lunch</option>
+                        <option id="dinner" value="dinner">Dinner</option>
+                        <option id="saturday" value="saturday">Saturday</option>
+                    </select>
+                </div>
+                <div>
+                    <h1 class="title-menu"><br></h1>
+                </div>
+                <div>
+                    <p class="description-menu">
+                        Lorem ipsum dolor sit amet,
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- cambia il il titolo del menu in base alla selezione -->
+        <script>
+            $(document).ready(function () {
+                $('.seleziona-un-altro-menu').change(function () {
+                    var selectedOption = $(this).children('option:selected').text();
+                    $('.title-menu').text(selectedOption);
+                });
+            });    
+        </script>
+
+        <div class="course-buttons-container" class="carousel"
+            data-flickity='{ "freeScroll": true, "contain": true, "prevNextButtons": false, "pageDots": false, "autoPlay": false}'>
+
+            <a id="starter" href="#" class="course-button">
+                <span class="course-icon">
+                    <img src="./img/vegetable.png" alt="Logo">
+                </span>
+                <span class="course-text ptsans-bold-regent-gray-24px">Starters</span>
+            </a>
+
+            <a id="main" href="#" class="course-button">
+                <span class="course-icon">
+                    <img src="./img/hot.png" alt="Logo">
+                </span>
+                <span class="course-text ptsans-bold-regent-gray-24px ">Mains</span>
+            </a>
+            <a id="side" href="#" class="course-button">
+                <span class="course-icon">
+                    <img src="./img/side.png" alt="Logo">
+                </span>
+                <span class="course-text ptsans-bold-regent-gray-24px">Sides</span>
+            </a>
+            <a id="salad" href="#" class="course-button">
+                <span class="course-icon">
+                    <img src="./img/salad.png" alt="Logo">
+                </span>
+                <span class="course-text ptsans-bold-regent-gray-24px">Salads</span>
+            </a>
+
+            <a id="dessert" href="#" class="course-button">
+                <span class="course-icon">
+                    <img src="./img/dessert.png" alt="Logo">
+                </span>
+                <span class="course-text ptsans-bold-regent-gray-24px">Desserts</span>
+            </a>
+            <a id="drink" href="#" class="course-button">
+                <span class="course-icon">
+                    <img src="./img/cheers.png" alt="Logo">
+                </span>
+                <span class="course-text ptsans-bold-regent-gray-24px">Drinks</span>
+            </a>
+        </div>
+
+        <!-- cambia il titotlo del course in base al link cliccato -->
+        <script>
+            $('.course-button').on('click', function () {
+                // Recuperare il testo del pulsante cliccato
+                const buttonText = $(this).find('.course-text').text();
+
+                // Aggiornare il testo del tag <h3> corrispondente
+                $('.course-title-text h3').text(buttonText);
+            });
+        </script>
+    </div>
+    <BR>
+    <div class="button-container">
+        <a href="#" id="show-all" class="button"><span class="icon-show-all"></span></a>
+        <a href="#" id="vegan" class="button"><span class="icon-vegan"></span></a>
+        <a href="#" id="vegetarian" class="button"><span class="icon-vegetarian"></span></a>
+        <a href="#" id="meat" class="button"><span class="icon-meat"></span></a>
+        <span>
+            <input class="spicy-range-bar-style" type="range" id="spicy" name="spicy" min="0" max="16" step="4" >
+            <label for="spicy">Spicy</label>
+        </span>
+        <script>
+
+            // Imposta il valore di default del range a 0
+            $("#spicy").val(0);
+        </script>
+        <span>
+            <input type="range" id="calories" name="calories" min="0" max="2000" step="10">
+            <label for="calories">Calories</label>
+        </span>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('.button span').click(function () {
+                // Rimuovi la classe "active" da tutti i link
+                $('.button span').removeClass('active');
+                // Aggiungi la classe "active" al link cliccato
+                $(this).addClass('active');
+            });
+        });
+    </script>
+
+    <div class="course-title-container">
+        <div class="course-title-line" style="flex-grow: 4">
+            <div><img src="./img/line-7-1@1x.png" alt=""></div>
+        </div>
+        <div class="course-title-text" style="flex-grow: 2">
+            <h3>Course</h3>
+        </div>
+        <div class="course-title-line" style="flex-grow: 4">
+            <div><img src="./img/line-7-1@1x.png" alt=""></div>
+        </div>
+    </div>
+
+    <div class="sidebar-button-container">
+
+        <div class="sidebar-button-item"><span class="material-symbols-outlined">
+                expand_more
+            </span><a>Filtra per intolleranze</a>
+
+        </div>
+        <div class="filter-list-item">
+            <!-- <input type="checkbox" id="clear-all">
+            <label for="clear-all"></label>&nbsp; -->
+            <a class="remove-all">&nbsp;&nbsp;Clear All &nbsp;</a>
+        </div>
+        <div id="Celery-label" class="filter-list-item element-to-hide">
+            <input type="checkbox" id="Celery-checkbox">
+            <label class="checkbox-style" for="Celery-checkbox"></label><a>Celery</a>
+        </div>
+        <div id="Gluten-label" class="filter-list-item element-to-hide">
+            <input type="checkbox" id="Gluten-checkbox">
+            <label class="checkbox-style" for="Gluten-checkbox"></label><a>Gluten</a>
+        </div>
+        <div id="Crustaceans-label" class="filter-list-item element-to-hide">
+            <input type="checkbox" id="Crustaceans-checkbox">
+            <label class="checkbox-style" for="Crustaceans-checkbox"
+                for="Crustaceans-checkbox"></label><a>Crustaceans</a>
+        </div>
+        <div id="Eggs-label" class="filter-list-item element-to-hide">
+            <input type="checkbox" id="Eggs-checkbox">
+            <label class="checkbox-style" for="Eggs-checkbox"></label><a>Eggs</a>
+        </div>
+        <div id="Fish-label" class="filter-list-item element-to-hide">
+            <input type="checkbox" id="Fish-checkbox">
+            <label class="checkbox-style" for="Fish-checkbox"></label><a>Fish</a>
+        </div>
+        <div id="Lupin-label" class="filter-list-item element-to-hide">
+            <input type="checkbox" id="Lupin-checkbox">
+            <label class="checkbox-style" for="Lupin-checkbox"></label><a>Lupin</a>
+        </div>
+        <div id="Milk-label" class="filter-list-item element-to-hide">
+            <input type="checkbox" id="Milk-checkbox">
+            <label class="checkbox-style" for="Milk-checkbox"></label><a>Milk</a>
+        </div>
+        <div id="Molluscs-label" class="filter-list-item element-to-hide">
+            <input type="checkbox" id="Molluscs-checkbox">
+            <label class="checkbox-style" for="Molluscs-checkbox"></label><a>Molluscs</a>
+        </div>
+        <div id="Mustard-label" class="filter-list-item element-to-hide">
+            <input type="checkbox" id="Mustard-checkbox">
+            <label class="checkbox-style" for="Mustard-checkbox"></label><a>Mustard</a>
+        </div>
+        <div id="Soya-label" class="filter-list-item element-to-hide">
+            <input type="checkbox" id="Soya-checkbox">
+            <label class="checkbox-style" for="Soya-checkbox"></label><a>Soya</a>
+        </div>
+        <div id="Sesame-seeds-label" class="filter-list-item element-to-hide">
+            <input type="checkbox" id="Sesame-seeds-checkbox">
+            <label class="checkbox-style" for="Sesame-seeds-checkbox"></label><a>Sesame-seeds</a>
+        </div>
+        <div id="Peanuts-label" class="filter-list-item element-to-hide">
+            <input type="checkbox" id="Peanuts-checkbox">
+            <label class="checkbox-style" for="Peanuts-checkbox"></label><a>Peanuts</a>
+        </div>
+        <div id="Nuts-label" class="filter-list-item element-to-hide">
+            <input type="checkbox" id="Nuts-checkbox">
+            <label class="checkbox-style" for="Nuts-checkbox"></label><a>Nuts</a>
+        </div>
+        <div id="Sulphur-dioxide-label" class="filter-list-item element-to-hide">
+            <input type="checkbox" id="Sulphur-dioxide-checkbox">
+            <label class="checkbox-style" for="Sulphur-dioxide-checkbox"></label><a>Sulphur-dioxide</a>
+        </div>
+    </div>
+
+    <!-- clear-all -->
+
+
+    <!-- sincronizza i due checkbox -->
+    <script>
+        $(document).ready(function () {
+            $('input[type=checkbox]').on('change', function () {
+                var id = $(this).attr('id');
+                var newId = id.charAt(0).toUpperCase() + id.slice(1);
+                // alert(newId)
+                $('#' + newId + '-checkbox').prop('checked', this.checked);
+            });
+
+        });
+    </script>
+    <!-- sincronizza i due checkbox dalle labels-->
+    <script>
+        $(document).ready(function () {
+            $('[id$="-checkbox"]').on('change', function () {
+                var id = $(this).attr('id').replace('-checkbox', '').toLowerCase();
+                $('#' + id).prop('checked', this.checked);
+                if (!this.checked) {
+                    $('[for="' + $(this).attr('id') + '"]').closest('.element-to-hide').hide();
+                }
+                else {
+                    $('[for="' + $(this).attr('id') + '"]').closest('.element-to-hide').show();
+                }
+            });
+        });
+    </script>
+
+    <!-- hide and show il corrispondente checkbox -->
+    <script>
+
+        $(document).ready(function () {
+
+            $('input[type="checkbox"]').click(function () {
+
+                var id = $(this).attr('id');
+                var newId = id.charAt(0).toUpperCase() + id.slice(1);
+                if ($(this).is(":checked")) {
+                    $('.filter-list-item:contains(' + newId + ')').show();
+                } else {
+                    $('.filter-list-item:contains(' + newId + ')').hide();
+                }
+            });
+        });
+    </script>
+
+
+
+
+
+    <div class="dropdown-cards-container1">
+        <div class="sidebar">
+            <table>
+
+                <tr>
+                    <td><input type="checkbox" id="celery">
+                        <label class="checkbox-style" for="celery"></label>
+                    </td>
+                    <td>Celery</td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="gluten">
+                        <label class="checkbox-style" for="gluten"></label>
+                    </td>
+                    <td>Gluten</td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="crustaceans">
+                        <label class="checkbox-style" for="crustaceans"></label>
+                    </td>
+                    <td>Crustaceans</td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="eggs">
+                        <label class="checkbox-style" for="eggs"></label>
+                    </td>
+                    <td>Eggs</td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="fish">
+                        <label class="checkbox-style" for="fish"></label>
+                    </td>
+                    <td>Fish</td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="lupin">
+                        <label class="checkbox-style" for="lupin"></label>
+                    </td>
+                    <td>Lupin</td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="milk">
+                        <label class="checkbox-style" for="milk"></label>
+                    </td>
+                    <td>Milk</td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="molluscs">
+                        <label class="checkbox-style" for="molluscs"></label>
+                    </td>
+                    <td>Molluscs</td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="mustard">
+                        <label class="checkbox-style" for="mustard"></label>
+                    </td>
+                    <td>Mustard</td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="nuts">
+                        <label class="checkbox-style" for="nuts"></label>
+                    </td>
+                    <td>Nuts</td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="peanuts">
+                        <label class="checkbox-style" for="peanuts"></label>
+                    </td>
+                    <td>Peanuts</td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="sesame-seeds">
+                        <label class="checkbox-style" for="sesame-seeds"></label>
+                    </td>
+                    <td>Sesame seeds</td>
+
+                </tr>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="soya">
+                        <label class="checkbox-style" for="soya"></label>
+                    </td>
+                    <td>Soya</td>
+
+                </tr>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="sulphur-dioxide">
+                        <label class="checkbox-style" for="sulphur-dioxide"></label>
+                    </td>
+                    <td>Sulphur dioxide</td>
+
+                </tr>
+            </table>
+
+        </div>
+
+        <div class="dropdown-cards-container">
+            <div class="cards-items saturday side vegan gluten show-all">
+
+                <div class="overlap-group5">
+                    <img class="a53959eceaed76a3a3ada8f4fde15924" src="img/a53959eceaed76a3a3ada8f4fde15924-1@1x.png"
+                        alt="a53959eceaed76a3a3ada8f4fde15924" />
+                    <div class="overlap-group3">
+                        <div class="rectangle-33"></div>
+                        <div class="rectangle-34-1"></div>
+                        <div class="primo-piatto-di-pasta">Primo piatto di pasta</div>
+                        <div class="nd">N.d.</div>
+                        <p class="lorem-ipsum-dolor-si">
+                            <span class="span0">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                eirmod tempor invidunt ut labore
+                                et dolore ….<br /></span><span class="span1">Pomodoro, cipolla, Carne, Olive</span>
+                        </p>
+                        <img class="icon-star" src="img/path-11-5@1x.png" alt="icon-star" />
+                        <div class="group-11">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-12">
+                            <div class="glutine-1 glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-13">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="price">19.50€</div>
+                        <img class="line-5 line" src="img/line-1-1@1x.png" alt="Line 5" />
+                        <div class="mask-group-7 mask-group">
+                            <div class="chili-pepper-svgrepo-com">
+                                <div class="path-container-1">
+                                    <img class="path-30" src="img/path-13-1@1x.png" alt="Path 30" />
+                                    <img class="path-31" src="img/path-14-1@1x.png" alt="Path 31" />
+                                    <img class="path-32" src="img/path-15-1@1x.png" alt="Path 32" />
+                                    <img class="path-33" src="img/path-16-1@1x.png" alt="Path 33" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mask-group-8-1">
+                            <div class="leaf-svgrepo-com">
+                                <div class="overlap-group1">
+                                    <img class="path-34" src="img/path-34-1@1x.png" alt="Path 34" />
+                                    <div class="group-14-1">
+                                        <div class="path-container">
+                                            <img class="path-35" src="img/path-35-1@1x.png" alt="Path 35" />
+                                            <img class="path-36" src="img/path-19-1@1x.png" alt="Path 36" />
+                                        </div>
+                                        <img class="path-37" src="img/path-20-1@1x.png" alt="Path 37" />
+                                    </div>
+                                    <img class="path-38" src="img/path-21-1@1x.png" alt="Path 38" />
+                                    <img class="path-39" src="img/path-22-1@1x.png" alt="Path 39" />
+                                </div>
+                            </div>
+                        </div>
+                        <img class="line-6 line" src="img/line-2-1@1x.png" alt="Line 6" />
+                        <div class="text text-2">… +3</div>
+                        <div class="rectangle-28-1"></div>
+                        <div class="aggiungi">Aggiungi</div>
+                        <div class="ellipse-2-1"></div>
+                        <div class="mask-group-10-1">
+                            <div class="cart-add-svgrepo-com">
+                                <div class="primary-container">
+                                    <img class="primary-3" src="img/primary-10@1x.png" alt="primary" />
+                                    <img class="primary-4" src="img/primary-11@1x.png" alt="primary" />
+                                </div>
+                                <div class="primary-upstroke-container">
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cards-items lunch main vegetarian gluten show-all">
+                <div class="overlap-group4">
+                    <img class="pasta-carbonara-reci"
+                        src="img/pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7f-1@1x.png"
+                        alt="pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7fad1d157" />
+                    <div class="overlap-group2">
+                        <div class="rectangle-33"></div>
+                        <div class="rectangle-34"></div>
+                        <h1 class="title">Primo piatto di pasta</h1>
+                        <div class="text-1 text-2">3/5</div>
+                        <p class="lorem-ipsum-dolor-si">
+                            <span class="span0">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                eirmod tempor invidunt ut labore
+                                et dolore ….<br /></span><span class="span1">Pomodoro, cipolla, Carne, Olive</span>
+                        </p>
+                        <img class="icon-star" src="img/path-11-1@1x.png" alt="icon-star" />
+                        <div class="group-11">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-12">
+                            <div class="glutine-1 glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-13">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="price">19.50€</div>
+                        <img class="line-5 line" src="img/line-1-1@1x.png" alt="Line 5" />
+                        <div class="mask-group-8 mask-group">
+                            <div class="leaf-svgrepo-com">
+                                <div class="overlap-group1">
+                                    <img class="path-34" src="img/path-17-1@1x.png" alt="Path 34" />
+                                    <div class="group-14">
+                                        <div class="path-container">
+                                            <img class="path-35" src="img/path-35-1@1x.png" alt="Path 35" />
+                                            <img class="path-36" src="img/path-19-1@1x.png" alt="Path 36" />
+                                        </div>
+                                        <img class="path-37" src="img/path-20-1@1x.png" alt="Path 37" />
+                                    </div>
+                                    <img class="path-38" src="img/path-21-1@1x.png" alt="Path 38" />
+                                    <img class="path-39" src="img/path-22-1@1x.png" alt="Path 39" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text text-2">… +3</div>
+                        <div class="rectangle-28"></div>
+                        <div class="aggiunto">Aggiunto</div>
+                        <div class="ellipse-2"></div>
+                        <div class="mask-group-10 mask-group">
+                            <div class="cart-add-svgrepo-com">
+                                <img class="primary" src="img/primary-11@1x.png" alt="primary" />
+                                <div class="primary-upstroke-container">
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                </div>
+                            </div>
+                        </div>
+                        <img class="primary-1" src="img/primary-18@1x.png" alt="primary" />
+                    </div>
+                    <div class="text-4 text-2">1|</div>
+                    <div class="rectangle-35"></div>
+                    <img class="primary-2" src="img/primary-15@1x.png" alt="primary" />
+                </div>
+            </div>
+            <div class="cards-items saturday starter meat fish show-all">
+                <div class="overlap-group4">
+                    <img class="pasta-carbonara-reci"
+                        src="img/pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7f-1@1x.png"
+                        alt="pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7fad1d157" />
+                    <div class="overlap-group2">
+                        <div class="rectangle-33"></div>
+                        <div class="rectangle-34"></div>
+                        <h1 class="title">Primo piatto di pasta</h1>
+                        <div class="text-1 text-2">3/5</div>
+                        <p class="lorem-ipsum-dolor-si">
+                            <span class="span0">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                eirmod tempor invidunt ut labore
+                                et dolore ….<br /></span><span class="span1">Pomodoro, cipolla, Carne, Olive</span>
+                        </p>
+                        <img class="icon-star" src="img/path-11-1@1x.png" alt="icon-star" />
+                        <div class="group-11">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-12">
+                            <div class="glutine-1 glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-13">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="price">19.50€</div>
+                        <img class="line-5 line" src="img/line-1-1@1x.png" alt="Line 5" />
+                        <div class="mask-group-8 mask-group">
+                            <div class="leaf-svgrepo-com">
+                                <div class="overlap-group1">
+                                    <img class="path-34" src="img/path-17-1@1x.png" alt="Path 34" />
+                                    <div class="group-14">
+                                        <div class="path-container">
+                                            <img class="path-35" src="img/path-35-1@1x.png" alt="Path 35" />
+                                            <img class="path-36" src="img/path-19-1@1x.png" alt="Path 36" />
+                                        </div>
+                                        <img class="path-37" src="img/path-20-1@1x.png" alt="Path 37" />
+                                    </div>
+                                    <img class="path-38" src="img/path-21-1@1x.png" alt="Path 38" />
+                                    <img class="path-39" src="img/path-22-1@1x.png" alt="Path 39" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text text-2">… +3</div>
+                        <div class="rectangle-28"></div>
+                        <div class="aggiunto">Aggiunto</div>
+                        <div class="ellipse-2"></div>
+                        <div class="mask-group-10 mask-group">
+                            <div class="cart-add-svgrepo-com">
+                                <img class="primary" src="img/primary-11@1x.png" alt="primary" />
+                                <div class="primary-upstroke-container">
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                </div>
+                            </div>
+                        </div>
+                        <img class="primary-1" src="img/primary-18@1x.png" alt="primary" />
+                    </div>
+                    <div class="text-4 text-2">1|</div>
+                    <div class="rectangle-35"></div>
+                    <img class="primary-2" src="img/primary-15@1x.png" alt="primary" />
+                </div>
+            </div>
+            <div class="cards-items monday side vegetarian eggs show-all">
+                <div class="overlap-group5">
+                    <img class="a53959eceaed76a3a3ada8f4fde15924" src="img/a53959eceaed76a3a3ada8f4fde15924-1@1x.png"
+                        alt="a53959eceaed76a3a3ada8f4fde15924" />
+                    <div class="overlap-group3">
+                        <div class="rectangle-33"></div>
+                        <div class="rectangle-34-1"></div>
+                        <div class="primo-piatto-di-pasta">Primo piatto di pasta</div>
+                        <div class="nd">N.d.</div>
+                        <p class="lorem-ipsum-dolor-si">
+                            <span class="span0">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                eirmod tempor invidunt ut labore
+                                et dolore ….<br /></span><span class="span1">Pomodoro, cipolla, Carne, Olive</span>
+                        </p>
+                        <img class="icon-star" src="img/path-11-5@1x.png" alt="icon-star" />
+                        <div class="group-11">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-12">
+                            <div class="glutine-1 glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-13">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="price">19.50€</div>
+                        <img class="line-5 line" src="img/line-1-1@1x.png" alt="Line 5" />
+                        <div class="mask-group-7 mask-group">
+                            <div class="chili-pepper-svgrepo-com">
+                                <div class="path-container-1">
+                                    <img class="path-30" src="img/path-13-1@1x.png" alt="Path 30" />
+                                    <img class="path-31" src="img/path-14-1@1x.png" alt="Path 31" />
+                                    <img class="path-32" src="img/path-15-1@1x.png" alt="Path 32" />
+                                    <img class="path-33" src="img/path-16-1@1x.png" alt="Path 33" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mask-group-8-1">
+                            <div class="leaf-svgrepo-com">
+                                <div class="overlap-group1">
+                                    <img class="path-34" src="img/path-34-1@1x.png" alt="Path 34" />
+                                    <div class="group-14-1">
+                                        <div class="path-container">
+                                            <img class="path-35" src="img/path-35-1@1x.png" alt="Path 35" />
+                                            <img class="path-36" src="img/path-19-1@1x.png" alt="Path 36" />
+                                        </div>
+                                        <img class="path-37" src="img/path-20-1@1x.png" alt="Path 37" />
+                                    </div>
+                                    <img class="path-38" src="img/path-21-1@1x.png" alt="Path 38" />
+                                    <img class="path-39" src="img/path-22-1@1x.png" alt="Path 39" />
+                                </div>
+                            </div>
+                        </div>
+                        <img class="line-6 line" src="img/line-2-1@1x.png" alt="Line 6" />
+                        <div class="text text-2">… +3</div>
+                        <div class="rectangle-28-1"></div>
+                        <div class="aggiungi">Aggiungi</div>
+                        <div class="ellipse-2-1"></div>
+                        <div class="mask-group-10-1">
+                            <div class="cart-add-svgrepo-com">
+                                <div class="primary-container">
+                                    <img class="primary-3" src="img/primary-10@1x.png" alt="primary" />
+                                    <img class="primary-4" src="img/primary-11@1x.png" alt="primary" />
+                                </div>
+                                <div class="primary-upstroke-container">
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cards-items dinner drink vegan celery show-all">
+                <div class="overlap-group4">
+                    <img class="pasta-carbonara-reci"
+                        src="img/pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7f-1@1x.png"
+                        alt="pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7fad1d157" />
+                    <div class="overlap-group2">
+                        <div class="rectangle-33"></div>
+                        <div class="rectangle-34"></div>
+                        <h1 class="title">Primo piatto di pasta</h1>
+                        <div class="text-1 text-2">3/5</div>
+                        <p class="lorem-ipsum-dolor-si">
+                            <span class="span0">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                eirmod tempor invidunt ut labore
+                                et dolore ….<br /></span><span class="span1">Pomodoro, cipolla, Carne, Olive</span>
+                        </p>
+                        <img class="icon-star" src="img/path-11-1@1x.png" alt="icon-star" />
+                        <div class="group-11">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-12">
+                            <div class="glutine-1 glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-13">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="price">19.50€</div>
+                        <img class="line-5 line" src="img/line-1-1@1x.png" alt="Line 5" />
+                        <div class="mask-group-8 mask-group">
+                            <div class="leaf-svgrepo-com">
+                                <div class="overlap-group1">
+                                    <img class="path-34" src="img/path-17-1@1x.png" alt="Path 34" />
+                                    <div class="group-14">
+                                        <div class="path-container">
+                                            <img class="path-35" src="img/path-35-1@1x.png" alt="Path 35" />
+                                            <img class="path-36" src="img/path-19-1@1x.png" alt="Path 36" />
+                                        </div>
+                                        <img class="path-37" src="img/path-20-1@1x.png" alt="Path 37" />
+                                    </div>
+                                    <img class="path-38" src="img/path-21-1@1x.png" alt="Path 38" />
+                                    <img class="path-39" src="img/path-22-1@1x.png" alt="Path 39" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text text-2">… +3</div>
+                        <div class="rectangle-28"></div>
+                        <div class="aggiunto">Aggiunto</div>
+                        <div class="ellipse-2"></div>
+                        <div class="mask-group-10 mask-group">
+                            <div class="cart-add-svgrepo-com">
+                                <img class="primary" src="img/primary-11@1x.png" alt="primary" />
+                                <div class="primary-upstroke-container">
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                </div>
+                            </div>
+                        </div>
+                        <img class="primary-1" src="img/primary-18@1x.png" alt="primary" />
+                    </div>
+                    <div class="text-4 text-2">1|</div>
+                    <div class="rectangle-35"></div>
+                    <img class="primary-2" src="img/primary-15@1x.png" alt="primary" />
+                </div>
+            </div>
+            <div class="cards-items dinner salad vegan fish show-all">
+                <div class="overlap-group4">
+                    <img class="pasta-carbonara-reci"
+                        src="img/pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7f-1@1x.png"
+                        alt="pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7fad1d157" />
+                    <div class="overlap-group2">
+                        <div class="rectangle-33"></div>
+                        <div class="rectangle-34"></div>
+                        <h1 class="title">Primo piatto di pasta</h1>
+                        <div class="text-1 text-2">3/5</div>
+                        <p class="lorem-ipsum-dolor-si">
+                            <span class="span0">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                eirmod tempor invidunt ut labore
+                                et dolore ….<br /></span><span class="span1">Pomodoro, cipolla, Carne, Olive</span>
+                        </p>
+                        <img class="icon-star" src="img/path-11-1@1x.png" alt="icon-star" />
+                        <div class="group-11">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-12">
+                            <div class="glutine-1 glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-13">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="price">19.50€</div>
+                        <img class="line-5 line" src="img/line-1-1@1x.png" alt="Line 5" />
+                        <div class="mask-group-8 mask-group">
+                            <div class="leaf-svgrepo-com">
+                                <div class="overlap-group1">
+                                    <img class="path-34" src="img/path-17-1@1x.png" alt="Path 34" />
+                                    <div class="group-14">
+                                        <div class="path-container">
+                                            <img class="path-35" src="img/path-35-1@1x.png" alt="Path 35" />
+                                            <img class="path-36" src="img/path-19-1@1x.png" alt="Path 36" />
+                                        </div>
+                                        <img class="path-37" src="img/path-20-1@1x.png" alt="Path 37" />
+                                    </div>
+                                    <img class="path-38" src="img/path-21-1@1x.png" alt="Path 38" />
+                                    <img class="path-39" src="img/path-22-1@1x.png" alt="Path 39" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text text-2">… +3</div>
+                        <div class="rectangle-28"></div>
+                        <div class="aggiunto">Aggiunto</div>
+                        <div class="ellipse-2"></div>
+                        <div class="mask-group-10 mask-group">
+                            <div class="cart-add-svgrepo-com">
+                                <img class="primary" src="img/primary-11@1x.png" alt="primary" />
+                                <div class="primary-upstroke-container">
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                </div>
+                            </div>
+                        </div>
+                        <img class="primary-1" src="img/primary-18@1x.png" alt="primary" />
+                    </div>
+                    <div class="text-4 text-2">1|</div>
+                    <div class="rectangle-35"></div>
+                    <img class="primary-2" src="img/primary-15@1x.png" alt="primary" />
+                </div>
+            </div>
+            <div class="cards-items lunch drink vegetarian lupin show-all">
+                <div class="overlap-group4">
+                    <img class="pasta-carbonara-reci"
+                        src="img/pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7f-1@1x.png"
+                        alt="pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7fad1d157" />
+                    <div class="overlap-group2">
+                        <div class="rectangle-33"></div>
+                        <div class="rectangle-34"></div>
+                        <h1 class="title">Primo piatto di pasta</h1>
+                        <div class="text-1 text-2">3/5</div>
+                        <p class="lorem-ipsum-dolor-si">
+                            <span class="span0">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                eirmod tempor invidunt ut labore
+                                et dolore ….<br /></span><span class="span1">Pomodoro, cipolla, Carne, Olive</span>
+                        </p>
+                        <img class="icon-star" src="img/path-11-1@1x.png" alt="icon-star" />
+                        <div class="group-11">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-12">
+                            <div class="glutine-1 glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-13">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="price">19.50€</div>
+                        <img class="line-5 line" src="img/line-1-1@1x.png" alt="Line 5" />
+                        <div class="mask-group-8 mask-group">
+                            <div class="leaf-svgrepo-com">
+                                <div class="overlap-group1">
+                                    <img class="path-34" src="img/path-17-1@1x.png" alt="Path 34" />
+                                    <div class="group-14">
+                                        <div class="path-container">
+                                            <img class="path-35" src="img/path-35-1@1x.png" alt="Path 35" />
+                                            <img class="path-36" src="img/path-19-1@1x.png" alt="Path 36" />
+                                        </div>
+                                        <img class="path-37" src="img/path-20-1@1x.png" alt="Path 37" />
+                                    </div>
+                                    <img class="path-38" src="img/path-21-1@1x.png" alt="Path 38" />
+                                    <img class="path-39" src="img/path-22-1@1x.png" alt="Path 39" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text text-2">… +3</div>
+                        <div class="rectangle-28"></div>
+                        <div class="aggiunto">Aggiunto</div>
+                        <div class="ellipse-2"></div>
+                        <div class="mask-group-10 mask-group">
+                            <div class="cart-add-svgrepo-com">
+                                <img class="primary" src="img/primary-11@1x.png" alt="primary" />
+                                <div class="primary-upstroke-container">
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                </div>
+                            </div>
+                        </div>
+                        <img class="primary-1" src="img/primary-18@1x.png" alt="primary" />
+                    </div>
+                    <div class="text-4 text-2">1|</div>
+                    <div class="rectangle-35"></div>
+                    <img class="primary-2" src="img/primary-15@1x.png" alt="primary" />
+                </div>
+            </div>
+            <div class="cards-items saturday starter meat milk show-all">
+                <div class="overlap-group4">
+                    <img class="pasta-carbonara-reci"
+                        src="img/pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7f-1@1x.png"
+                        alt="pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7fad1d157" />
+                    <div class="overlap-group2">
+                        <div class="rectangle-33"></div>
+                        <div class="rectangle-34"></div>
+                        <h1 class="title">Primo piatto di pasta</h1>
+                        <div class="text-1 text-2">3/5</div>
+                        <p class="lorem-ipsum-dolor-si">
+                            <span class="span0">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                eirmod tempor invidunt ut labore
+                                et dolore ….<br /></span><span class="span1">Pomodoro, cipolla, Carne, Olive</span>
+                        </p>
+                        <img class="icon-star" src="img/path-11-1@1x.png" alt="icon-star" />
+                        <div class="group-11">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-12">
+                            <div class="glutine-1 glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-13">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="price">19.50€</div>
+                        <img class="line-5 line" src="img/line-1-1@1x.png" alt="Line 5" />
+                        <div class="mask-group-8 mask-group">
+                            <div class="leaf-svgrepo-com">
+                                <div class="overlap-group1">
+                                    <img class="path-34" src="img/path-17-1@1x.png" alt="Path 34" />
+                                    <div class="group-14">
+                                        <div class="path-container">
+                                            <img class="path-35" src="img/path-35-1@1x.png" alt="Path 35" />
+                                            <img class="path-36" src="img/path-19-1@1x.png" alt="Path 36" />
+                                        </div>
+                                        <img class="path-37" src="img/path-20-1@1x.png" alt="Path 37" />
+                                    </div>
+                                    <img class="path-38" src="img/path-21-1@1x.png" alt="Path 38" />
+                                    <img class="path-39" src="img/path-22-1@1x.png" alt="Path 39" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text text-2">… +3</div>
+                        <div class="rectangle-28"></div>
+                        <div class="aggiunto">Aggiunto</div>
+                        <div class="ellipse-2"></div>
+                        <div class="mask-group-10 mask-group">
+                            <div class="cart-add-svgrepo-com">
+                                <img class="primary" src="img/primary-11@1x.png" alt="primary" />
+                                <div class="primary-upstroke-container">
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                </div>
+                            </div>
+                        </div>
+                        <img class="primary-1" src="img/primary-18@1x.png" alt="primary" />
+                    </div>
+                    <div class="text-4 text-2">1|</div>
+                    <div class="rectangle-35"></div>
+                    <img class="primary-2" src="img/primary-15@1x.png" alt="primary" />
+                </div>
+            </div>
+            <div class="cards-items monday side vegan molluscs show-all">
+                <div class="overlap-group5">
+                    <img class="a53959eceaed76a3a3ada8f4fde15924" src="img/a53959eceaed76a3a3ada8f4fde15924-1@1x.png"
+                        alt="a53959eceaed76a3a3ada8f4fde15924" />
+                    <div class="overlap-group3">
+                        <div class="rectangle-33"></div>
+                        <div class="rectangle-34-1"></div>
+                        <div class="primo-piatto-di-pasta">Primo piatto di pasta</div>
+                        <div class="nd">N.d.</div>
+                        <p class="lorem-ipsum-dolor-si">
+                            <span class="span0">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                eirmod tempor invidunt ut labore
+                                et dolore ….<br /></span><span class="span1">Pomodoro, cipolla, Carne, Olive</span>
+                        </p>
+                        <img class="icon-star" src="img/path-11-5@1x.png" alt="icon-star" />
+                        <div class="group-11">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-12">
+                            <div class="glutine-1 glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-13">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="price">19.50€</div>
+                        <img class="line-5 line" src="img/line-1-1@1x.png" alt="Line 5" />
+                        <div class="mask-group-7 mask-group">
+                            <div class="chili-pepper-svgrepo-com">
+                                <div class="path-container-1">
+                                    <img class="path-30" src="img/path-13-1@1x.png" alt="Path 30" />
+                                    <img class="path-31" src="img/path-14-1@1x.png" alt="Path 31" />
+                                    <img class="path-32" src="img/path-15-1@1x.png" alt="Path 32" />
+                                    <img class="path-33" src="img/path-16-1@1x.png" alt="Path 33" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mask-group-8-1">
+                            <div class="leaf-svgrepo-com">
+                                <div class="overlap-group1">
+                                    <img class="path-34" src="img/path-34-1@1x.png" alt="Path 34" />
+                                    <div class="group-14-1">
+                                        <div class="path-container">
+                                            <img class="path-35" src="img/path-35-1@1x.png" alt="Path 35" />
+                                            <img class="path-36" src="img/path-19-1@1x.png" alt="Path 36" />
+                                        </div>
+                                        <img class="path-37" src="img/path-20-1@1x.png" alt="Path 37" />
+                                    </div>
+                                    <img class="path-38" src="img/path-21-1@1x.png" alt="Path 38" />
+                                    <img class="path-39" src="img/path-22-1@1x.png" alt="Path 39" />
+                                </div>
+                            </div>
+                        </div>
+                        <img class="line-6 line" src="img/line-2-1@1x.png" alt="Line 6" />
+                        <div class="text text-2">… +3</div>
+                        <div class="rectangle-28-1"></div>
+                        <div class="aggiungi">Aggiungi</div>
+                        <div class="ellipse-2-1"></div>
+                        <div class="mask-group-10-1">
+                            <div class="cart-add-svgrepo-com">
+                                <div class="primary-container">
+                                    <img class="primary-3" src="img/primary-10@1x.png" alt="primary" />
+                                    <img class="primary-4" src="img/primary-11@1x.png" alt="primary" />
+                                </div>
+                                <div class="primary-upstroke-container">
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cards-items dinner salad vegan mustard show-all">
+                <div class="overlap-group4">
+                    <img class="pasta-carbonara-reci"
+                        src="img/pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7f-1@1x.png"
+                        alt="pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7fad1d157" />
+                    <div class="overlap-group2">
+                        <div class="rectangle-33"></div>
+                        <div class="rectangle-34"></div>
+                        <h1 class="title">Primo piatto di pasta</h1>
+                        <div class="text-1 text-2">3/5</div>
+                        <p class="lorem-ipsum-dolor-si">
+                            <span class="span0">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                eirmod tempor invidunt ut labore
+                                et dolore ….<br /></span><span class="span1">Pomodoro, cipolla, Carne, Olive</span>
+                        </p>
+                        <img class="icon-star" src="img/path-11-1@1x.png" alt="icon-star" />
+                        <div class="group-11">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-12">
+                            <div class="glutine-1 glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-13">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="price">19.50€</div>
+                        <img class="line-5 line" src="img/line-1-1@1x.png" alt="Line 5" />
+                        <div class="mask-group-8 mask-group">
+                            <div class="leaf-svgrepo-com">
+                                <div class="overlap-group1">
+                                    <img class="path-34" src="img/path-17-1@1x.png" alt="Path 34" />
+                                    <div class="group-14">
+                                        <div class="path-container">
+                                            <img class="path-35" src="img/path-35-1@1x.png" alt="Path 35" />
+                                            <img class="path-36" src="img/path-19-1@1x.png" alt="Path 36" />
+                                        </div>
+                                        <img class="path-37" src="img/path-20-1@1x.png" alt="Path 37" />
+                                    </div>
+                                    <img class="path-38" src="img/path-21-1@1x.png" alt="Path 38" />
+                                    <img class="path-39" src="img/path-22-1@1x.png" alt="Path 39" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text text-2">… +3</div>
+                        <div class="rectangle-28"></div>
+                        <div class="aggiunto">Aggiunto</div>
+                        <div class="ellipse-2"></div>
+                        <div class="mask-group-10 mask-group">
+                            <div class="cart-add-svgrepo-com">
+                                <img class="primary" src="img/primary-11@1x.png" alt="primary" />
+                                <div class="primary-upstroke-container">
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                </div>
+                            </div>
+                        </div>
+                        <img class="primary-1" src="img/primary-18@1x.png" alt="primary" />
+                    </div>
+                    <div class="text-4 text-2">1|</div>
+                    <div class="rectangle-35"></div>
+                    <img class="primary-2" src="img/primary-15@1x.png" alt="primary" />
+                </div>
+            </div>
+            <div class="cards-items dinner drink vegan nuts show-all">
+                <div class="overlap-group4">
+                    <img class="pasta-carbonara-reci"
+                        src="img/pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7f-1@1x.png"
+                        alt="pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7fad1d157" />
+                    <div class="overlap-group2">
+                        <div class="rectangle-33"></div>
+                        <div class="rectangle-34"></div>
+                        <h1 class="title">Primo piatto di pasta</h1>
+                        <div class="text-1 text-2">3/5</div>
+                        <p class="lorem-ipsum-dolor-si">
+                            <span class="span0">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                eirmod tempor invidunt ut labore
+                                et dolore ….<br /></span><span class="span1">Pomodoro, cipolla, Carne, Olive</span>
+                        </p>
+                        <img class="icon-star" src="img/path-11-1@1x.png" alt="icon-star" />
+                        <div class="group-11">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-12">
+                            <div class="glutine-1 glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-13">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="price">19.50€</div>
+                        <img class="line-5 line" src="img/line-1-1@1x.png" alt="Line 5" />
+                        <div class="mask-group-8 mask-group">
+                            <div class="leaf-svgrepo-com">
+                                <div class="overlap-group1">
+                                    <img class="path-34" src="img/path-17-1@1x.png" alt="Path 34" />
+                                    <div class="group-14">
+                                        <div class="path-container">
+                                            <img class="path-35" src="img/path-35-1@1x.png" alt="Path 35" />
+                                            <img class="path-36" src="img/path-19-1@1x.png" alt="Path 36" />
+                                        </div>
+                                        <img class="path-37" src="img/path-20-1@1x.png" alt="Path 37" />
+                                    </div>
+                                    <img class="path-38" src="img/path-21-1@1x.png" alt="Path 38" />
+                                    <img class="path-39" src="img/path-22-1@1x.png" alt="Path 39" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text text-2">… +3</div>
+                        <div class="rectangle-28"></div>
+                        <div class="aggiunto">Aggiunto</div>
+                        <div class="ellipse-2"></div>
+                        <div class="mask-group-10 mask-group">
+                            <div class="cart-add-svgrepo-com">
+                                <img class="primary" src="img/primary-11@1x.png" alt="primary" />
+                                <div class="primary-upstroke-container">
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                </div>
+                            </div>
+                        </div>
+                        <img class="primary-1" src="img/primary-18@1x.png" alt="primary" />
+                    </div>
+                    <div class="text-4 text-2">1|</div>
+                    <div class="rectangle-35"></div>
+                    <img class="primary-2" src="img/primary-15@1x.png" alt="primary" />
+                </div>
+            </div>
+            <div class="cards-items lunch drink vegetarian peanuts show-all">
+                <div class="overlap-group4">
+                    <img class="pasta-carbonara-reci"
+                        src="img/pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7f-1@1x.png"
+                        alt="pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7fad1d157" />
+                    <div class="overlap-group2">
+                        <div class="rectangle-33"></div>
+                        <div class="rectangle-34"></div>
+                        <h1 class="title">Primo piatto di pasta</h1>
+                        <div class="text-1 text-2">3/5</div>
+                        <p class="lorem-ipsum-dolor-si">
+                            <span class="span0">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                eirmod tempor invidunt ut labore
+                                et dolore ….<br /></span><span class="span1">Pomodoro, cipolla, Carne, Olive</span>
+                        </p>
+                        <img class="icon-star" src="img/path-11-1@1x.png" alt="icon-star" />
+                        <div class="group-11">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-12">
+                            <div class="glutine-1 glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-13">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="price">19.50€</div>
+                        <img class="line-5 line" src="img/line-1-1@1x.png" alt="Line 5" />
+                        <div class="mask-group-8 mask-group">
+                            <div class="leaf-svgrepo-com">
+                                <div class="overlap-group1">
+                                    <img class="path-34" src="img/path-17-1@1x.png" alt="Path 34" />
+                                    <div class="group-14">
+                                        <div class="path-container">
+                                            <img class="path-35" src="img/path-35-1@1x.png" alt="Path 35" />
+                                            <img class="path-36" src="img/path-19-1@1x.png" alt="Path 36" />
+                                        </div>
+                                        <img class="path-37" src="img/path-20-1@1x.png" alt="Path 37" />
+                                    </div>
+                                    <img class="path-38" src="img/path-21-1@1x.png" alt="Path 38" />
+                                    <img class="path-39" src="img/path-22-1@1x.png" alt="Path 39" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text text-2">… +3</div>
+                        <div class="rectangle-28"></div>
+                        <div class="aggiunto">Aggiunto</div>
+                        <div class="ellipse-2"></div>
+                        <div class="mask-group-10 mask-group">
+                            <div class="cart-add-svgrepo-com">
+                                <img class="primary" src="img/primary-11@1x.png" alt="primary" />
+                                <div class="primary-upstroke-container">
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                </div>
+                            </div>
+                        </div>
+                        <img class="primary-1" src="img/primary-18@1x.png" alt="primary" />
+                    </div>
+                    <div class="text-4 text-2">1|</div>
+                    <div class="rectangle-35"></div>
+                    <img class="primary-2" src="img/primary-15@1x.png" alt="primary" />
+                </div>
+            </div>
+            <div class="cards-items dinner starter meat sesame-seeds show-all">
+                <div class="overlap-group4">
+                    <img class="pasta-carbonara-reci"
+                        src="img/pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7f-1@1x.png"
+                        alt="pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7fad1d157" />
+                    <div class="overlap-group2">
+                        <div class="rectangle-33"></div>
+                        <div class="rectangle-34"></div>
+                        <h1 class="title">Primo piatto di pasta</h1>
+                        <div class="text-1 text-2">3/5</div>
+                        <p class="lorem-ipsum-dolor-si">
+                            <span class="span0">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                eirmod tempor invidunt ut labore
+                                et dolore ….<br /></span><span class="span1">Pomodoro, cipolla, Carne, Olive</span>
+                        </p>
+                        <img class="icon-star" src="img/path-11-1@1x.png" alt="icon-star" />
+                        <div class="group-11">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-12">
+                            <div class="glutine-1 glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-13">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="price">19.50€</div>
+                        <img class="line-5 line" src="img/line-1-1@1x.png" alt="Line 5" />
+                        <div class="mask-group-8 mask-group">
+                            <div class="leaf-svgrepo-com">
+                                <div class="overlap-group1">
+                                    <img class="path-34" src="img/path-17-1@1x.png" alt="Path 34" />
+                                    <div class="group-14">
+                                        <div class="path-container">
+                                            <img class="path-35" src="img/path-35-1@1x.png" alt="Path 35" />
+                                            <img class="path-36" src="img/path-19-1@1x.png" alt="Path 36" />
+                                        </div>
+                                        <img class="path-37" src="img/path-20-1@1x.png" alt="Path 37" />
+                                    </div>
+                                    <img class="path-38" src="img/path-21-1@1x.png" alt="Path 38" />
+                                    <img class="path-39" src="img/path-22-1@1x.png" alt="Path 39" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text text-2">… +3</div>
+                        <div class="rectangle-28"></div>
+                        <div class="aggiunto">Aggiunto</div>
+                        <div class="ellipse-2"></div>
+                        <div class="mask-group-10 mask-group">
+                            <div class="cart-add-svgrepo-com">
+                                <img class="primary" src="img/primary-11@1x.png" alt="primary" />
+                                <div class="primary-upstroke-container">
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                </div>
+                            </div>
+                        </div>
+                        <img class="primary-1" src="img/primary-18@1x.png" alt="primary" />
+                    </div>
+                    <div class="text-4 text-2">1|</div>
+                    <div class="rectangle-35"></div>
+                    <img class="primary-2" src="img/primary-15@1x.png" alt="primary" />
+                </div>
+            </div>
+            <div class="cards-items monday main vegan soya show-all">
+                <div class="overlap-group5">
+                    <img class="a53959eceaed76a3a3ada8f4fde15924" src="img/a53959eceaed76a3a3ada8f4fde15924-1@1x.png"
+                        alt="a53959eceaed76a3a3ada8f4fde15924" />
+                    <div class="overlap-group3">
+                        <div class="rectangle-33"></div>
+                        <div class="rectangle-34-1"></div>
+                        <div class="primo-piatto-di-pasta">Primo piatto di pasta</div>
+                        <div class="nd">N.d.</div>
+                        <p class="lorem-ipsum-dolor-si">
+                            <span class="span0">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                eirmod tempor invidunt ut labore
+                                et dolore ….<br /></span><span class="span1">Pomodoro, cipolla, Carne, Olive</span>
+                        </p>
+                        <img class="icon-star" src="img/path-11-5@1x.png" alt="icon-star" />
+                        <div class="group-11">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-12">
+                            <div class="glutine-1 glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-13">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="price">19.50€</div>
+                        <img class="line-5 line" src="img/line-1-1@1x.png" alt="Line 5" />
+                        <div class="mask-group-7 mask-group">
+                            <div class="chili-pepper-svgrepo-com">
+                                <div class="path-container-1">
+                                    <img class="path-30" src="img/path-13-1@1x.png" alt="Path 30" />
+                                    <img class="path-31" src="img/path-14-1@1x.png" alt="Path 31" />
+                                    <img class="path-32" src="img/path-15-1@1x.png" alt="Path 32" />
+                                    <img class="path-33" src="img/path-16-1@1x.png" alt="Path 33" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mask-group-8-1">
+                            <div class="leaf-svgrepo-com">
+                                <div class="overlap-group1">
+                                    <img class="path-34" src="img/path-34-1@1x.png" alt="Path 34" />
+                                    <div class="group-14-1">
+                                        <div class="path-container">
+                                            <img class="path-35" src="img/path-35-1@1x.png" alt="Path 35" />
+                                            <img class="path-36" src="img/path-19-1@1x.png" alt="Path 36" />
+                                        </div>
+                                        <img class="path-37" src="img/path-20-1@1x.png" alt="Path 37" />
+                                    </div>
+                                    <img class="path-38" src="img/path-21-1@1x.png" alt="Path 38" />
+                                    <img class="path-39" src="img/path-22-1@1x.png" alt="Path 39" />
+                                </div>
+                            </div>
+                        </div>
+                        <img class="line-6 line" src="img/line-2-1@1x.png" alt="Line 6" />
+                        <div class="text text-2">… +3</div>
+                        <div class="rectangle-28-1"></div>
+                        <div class="aggiungi">Aggiungi</div>
+                        <div class="ellipse-2-1"></div>
+                        <div class="mask-group-10-1">
+                            <div class="cart-add-svgrepo-com">
+                                <div class="primary-container">
+                                    <img class="primary-3" src="img/primary-10@1x.png" alt="primary" />
+                                    <img class="primary-4" src="img/primary-11@1x.png" alt="primary" />
+                                </div>
+                                <div class="primary-upstroke-container">
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cards-items dinner salad vegetarian sulphur-dioxide show-all">
+                <div class="overlap-group4">
+                    <img class="pasta-carbonara-reci"
+                        src="img/pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7f-1@1x.png"
+                        alt="pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7fad1d157" />
+                    <div class="overlap-group2">
+                        <div class="rectangle-33"></div>
+                        <div class="rectangle-34"></div>
+                        <h1 class="title">Primo piatto di pasta</h1>
+                        <div class="text-1 text-2">3/5</div>
+                        <p class="lorem-ipsum-dolor-si">
+                            <span class="span0">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                eirmod tempor invidunt ut labore
+                                et dolore ….<br /></span><span class="span1">Pomodoro, cipolla, Carne, Olive</span>
+                        </p>
+                        <img class="icon-star" src="img/path-11-1@1x.png" alt="icon-star" />
+                        <div class="group-11">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-12">
+                            <div class="glutine-1 glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-13">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="price">19.50€</div>
+                        <img class="line-5 line" src="img/line-1-1@1x.png" alt="Line 5" />
+                        <div class="mask-group-8 mask-group">
+                            <div class="leaf-svgrepo-com">
+                                <div class="overlap-group1">
+                                    <img class="path-34" src="img/path-17-1@1x.png" alt="Path 34" />
+                                    <div class="group-14">
+                                        <div class="path-container">
+                                            <img class="path-35" src="img/path-35-1@1x.png" alt="Path 35" />
+                                            <img class="path-36" src="img/path-19-1@1x.png" alt="Path 36" />
+                                        </div>
+                                        <img class="path-37" src="img/path-20-1@1x.png" alt="Path 37" />
+                                    </div>
+                                    <img class="path-38" src="img/path-21-1@1x.png" alt="Path 38" />
+                                    <img class="path-39" src="img/path-22-1@1x.png" alt="Path 39" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text text-2">… +3</div>
+                        <div class="rectangle-28"></div>
+                        <div class="aggiunto">Aggiunto</div>
+                        <div class="ellipse-2"></div>
+                        <div class="mask-group-10 mask-group">
+                            <div class="cart-add-svgrepo-com">
+                                <img class="primary" src="img/primary-11@1x.png" alt="primary" />
+                                <div class="primary-upstroke-container">
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                </div>
+                            </div>
+                        </div>
+                        <img class="primary-1" src="img/primary-18@1x.png" alt="primary" />
+                    </div>
+                    <div class="text-4 text-2">1|</div>
+                    <div class="rectangle-35"></div>
+                    <img class="primary-2" src="img/primary-15@1x.png" alt="primary" />
+                </div>
+            </div>
+            <div class="cards-items saturday salad vegan gluten sulphur-dioxide show-all">
+                <div class="overlap-group4">
+                    <img class="pasta-carbonara-reci"
+                        src="img/pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7f-1@1x.png"
+                        alt="pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7fad1d157" />
+                    <div class="overlap-group2">
+                        <div class="rectangle-33"></div>
+                        <div class="rectangle-34"></div>
+                        <h1 class="title">Primo piatto di pasta</h1>
+                        <div class="text-1 text-2">3/5</div>
+                        <p class="lorem-ipsum-dolor-si">
+                            <span class="span0">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                eirmod tempor invidunt ut labore
+                                et dolore ….<br /></span><span class="span1">Pomodoro, cipolla, Carne, Olive</span>
+                        </p>
+                        <img class="icon-star" src="img/path-11-1@1x.png" alt="icon-star" />
+                        <div class="group-11">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-12">
+                            <div class="glutine-1 glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-13">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="price">19.50€</div>
+                        <img class="line-5 line" src="img/line-1-1@1x.png" alt="Line 5" />
+                        <div class="mask-group-8 mask-group">
+                            <div class="leaf-svgrepo-com">
+                                <div class="overlap-group1">
+                                    <img class="path-34" src="img/path-17-1@1x.png" alt="Path 34" />
+                                    <div class="group-14">
+                                        <div class="path-container">
+                                            <img class="path-35" src="img/path-35-1@1x.png" alt="Path 35" />
+                                            <img class="path-36" src="img/path-19-1@1x.png" alt="Path 36" />
+                                        </div>
+                                        <img class="path-37" src="img/path-20-1@1x.png" alt="Path 37" />
+                                    </div>
+                                    <img class="path-38" src="img/path-21-1@1x.png" alt="Path 38" />
+                                    <img class="path-39" src="img/path-22-1@1x.png" alt="Path 39" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text text-2">… +3</div>
+                        <div class="rectangle-28"></div>
+                        <div class="aggiunto">Aggiunto</div>
+                        <div class="ellipse-2"></div>
+                        <div class="mask-group-10 mask-group">
+                            <div class="cart-add-svgrepo-com">
+                                <img class="primary" src="img/primary-11@1x.png" alt="primary" />
+                                <div class="primary-upstroke-container">
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                </div>
+                            </div>
+                        </div>
+                        <img class="primary-1" src="img/primary-18@1x.png" alt="primary" />
+                    </div>
+                    <div class="text-4 text-2">1|</div>
+                    <div class="rectangle-35"></div>
+                    <img class="primary-2" src="img/primary-15@1x.png" alt="primary" />
+                </div>
+            </div>
+            <div class="cards-items lunch drink vegetarian celery nuts show-all">
+                <div class="overlap-group4">
+                    <img class="pasta-carbonara-reci"
+                        src="img/pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7f-1@1x.png"
+                        alt="pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7fad1d157" />
+                    <div class="overlap-group2">
+                        <div class="rectangle-33"></div>
+                        <div class="rectangle-34"></div>
+                        <h1 class="title">Primo piatto di pasta</h1>
+                        <div class="text-1 text-2">3/5</div>
+                        <p class="lorem-ipsum-dolor-si">
+                            <span class="span0">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                eirmod tempor invidunt ut labore
+                                et dolore ….<br /></span><span class="span1">Pomodoro, cipolla, Carne, Olive</span>
+                        </p>
+                        <img class="icon-star" src="img/path-11-1@1x.png" alt="icon-star" />
+                        <div class="group-11">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-12">
+                            <div class="glutine-1 glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-13">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="price">19.50€</div>
+                        <img class="line-5 line" src="img/line-1-1@1x.png" alt="Line 5" />
+                        <div class="mask-group-8 mask-group">
+                            <div class="leaf-svgrepo-com">
+                                <div class="overlap-group1">
+                                    <img class="path-34" src="img/path-17-1@1x.png" alt="Path 34" />
+                                    <div class="group-14">
+                                        <div class="path-container">
+                                            <img class="path-35" src="img/path-35-1@1x.png" alt="Path 35" />
+                                            <img class="path-36" src="img/path-19-1@1x.png" alt="Path 36" />
+                                        </div>
+                                        <img class="path-37" src="img/path-20-1@1x.png" alt="Path 37" />
+                                    </div>
+                                    <img class="path-38" src="img/path-21-1@1x.png" alt="Path 38" />
+                                    <img class="path-39" src="img/path-22-1@1x.png" alt="Path 39" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text text-2">… +3</div>
+                        <div class="rectangle-28"></div>
+                        <div class="aggiunto">Aggiunto</div>
+                        <div class="ellipse-2"></div>
+                        <div class="mask-group-10 mask-group">
+                            <div class="cart-add-svgrepo-com">
+                                <img class="primary" src="img/primary-11@1x.png" alt="primary" />
+                                <div class="primary-upstroke-container">
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                </div>
+                            </div>
+                        </div>
+                        <img class="primary-1" src="img/primary-18@1x.png" alt="primary" />
+                    </div>
+                    <div class="text-4 text-2">1|</div>
+                    <div class="rectangle-35"></div>
+                    <img class="primary-2" src="img/primary-15@1x.png" alt="primary" />
+                </div>
+            </div>
+            <div class="cards-items dinner starter meat lupin show-all">
+                <div class="overlap-group4">
+                    <img class="pasta-carbonara-reci"
+                        src="img/pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7f-1@1x.png"
+                        alt="pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7fad1d157" />
+                    <div class="overlap-group2">
+                        <div class="rectangle-33"></div>
+                        <div class="rectangle-34"></div>
+                        <h1 class="title">Primo piatto di pasta</h1>
+                        <div class="text-1 text-2">3/5</div>
+                        <p class="lorem-ipsum-dolor-si">
+                            <span class="span0">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                eirmod tempor invidunt ut labore
+                                et dolore ….<br /></span><span class="span1">Pomodoro, cipolla, Carne, Olive</span>
+                        </p>
+                        <img class="icon-star" src="img/path-11-1@1x.png" alt="icon-star" />
+                        <div class="group-11">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-12">
+                            <div class="glutine-1 glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-13">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="price">19.50€</div>
+                        <img class="line-5 line" src="img/line-1-1@1x.png" alt="Line 5" />
+                        <div class="mask-group-8 mask-group">
+                            <div class="leaf-svgrepo-com">
+                                <div class="overlap-group1">
+                                    <img class="path-34" src="img/path-17-1@1x.png" alt="Path 34" />
+                                    <div class="group-14">
+                                        <div class="path-container">
+                                            <img class="path-35" src="img/path-35-1@1x.png" alt="Path 35" />
+                                            <img class="path-36" src="img/path-19-1@1x.png" alt="Path 36" />
+                                        </div>
+                                        <img class="path-37" src="img/path-20-1@1x.png" alt="Path 37" />
+                                    </div>
+                                    <img class="path-38" src="img/path-21-1@1x.png" alt="Path 38" />
+                                    <img class="path-39" src="img/path-22-1@1x.png" alt="Path 39" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text text-2">… +3</div>
+                        <div class="rectangle-28"></div>
+                        <div class="aggiunto">Aggiunto</div>
+                        <div class="ellipse-2"></div>
+                        <div class="mask-group-10 mask-group">
+                            <div class="cart-add-svgrepo-com">
+                                <img class="primary" src="img/primary-11@1x.png" alt="primary" />
+                                <div class="primary-upstroke-container">
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                </div>
+                            </div>
+                        </div>
+                        <img class="primary-1" src="img/primary-18@1x.png" alt="primary" />
+                    </div>
+                    <div class="text-4 text-2">1|</div>
+                    <div class="rectangle-35"></div>
+                    <img class="primary-2" src="img/primary-15@1x.png" alt="primary" />
+                </div>
+            </div>
+            <div class="cards-items monday side vegan mustard show-all">
+                <div class="overlap-group5">
+                    <img class="a53959eceaed76a3a3ada8f4fde15924" src="img/a53959eceaed76a3a3ada8f4fde15924-1@1x.png"
+                        alt="a53959eceaed76a3a3ada8f4fde15924" />
+                    <div class="overlap-group3">
+                        <div class="rectangle-33"></div>
+                        <div class="rectangle-34-1"></div>
+                        <div class="primo-piatto-di-pasta">Primo piatto di pasta</div>
+                        <div class="nd">N.d.</div>
+                        <p class="lorem-ipsum-dolor-si">
+                            <span class="span0">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                eirmod tempor invidunt ut labore
+                                et dolore ….<br /></span><span class="span1">Pomodoro, cipolla, Carne, Olive</span>
+                        </p>
+                        <img class="icon-star" src="img/path-11-5@1x.png" alt="icon-star" />
+                        <div class="group-11">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-12">
+                            <div class="glutine-1 glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-13">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="price">19.50€</div>
+                        <img class="line-5 line" src="img/line-1-1@1x.png" alt="Line 5" />
+                        <div class="mask-group-7 mask-group">
+                            <div class="chili-pepper-svgrepo-com">
+                                <div class="path-container-1">
+                                    <img class="path-30" src="img/path-13-1@1x.png" alt="Path 30" />
+                                    <img class="path-31" src="img/path-14-1@1x.png" alt="Path 31" />
+                                    <img class="path-32" src="img/path-15-1@1x.png" alt="Path 32" />
+                                    <img class="path-33" src="img/path-16-1@1x.png" alt="Path 33" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mask-group-8-1">
+                            <div class="leaf-svgrepo-com">
+                                <div class="overlap-group1">
+                                    <img class="path-34" src="img/path-34-1@1x.png" alt="Path 34" />
+                                    <div class="group-14-1">
+                                        <div class="path-container">
+                                            <img class="path-35" src="img/path-35-1@1x.png" alt="Path 35" />
+                                            <img class="path-36" src="img/path-19-1@1x.png" alt="Path 36" />
+                                        </div>
+                                        <img class="path-37" src="img/path-20-1@1x.png" alt="Path 37" />
+                                    </div>
+                                    <img class="path-38" src="img/path-21-1@1x.png" alt="Path 38" />
+                                    <img class="path-39" src="img/path-22-1@1x.png" alt="Path 39" />
+                                </div>
+                            </div>
+                        </div>
+                        <img class="line-6 line" src="img/line-2-1@1x.png" alt="Line 6" />
+                        <div class="text text-2">… +3</div>
+                        <div class="rectangle-28-1"></div>
+                        <div class="aggiungi">Aggiungi</div>
+                        <div class="ellipse-2-1"></div>
+                        <div class="mask-group-10-1">
+                            <div class="cart-add-svgrepo-com">
+                                <div class="primary-container">
+                                    <img class="primary-3" src="img/primary-10@1x.png" alt="primary" />
+                                    <img class="primary-4" src="img/primary-11@1x.png" alt="primary" />
+                                </div>
+                                <div class="primary-upstroke-container">
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cards-items dinner salad vegan molluscs show-all">
+                <div class="overlap-group4">
+                    <img class="pasta-carbonara-reci"
+                        src="img/pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7f-1@1x.png"
+                        alt="pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7fad1d157" />
+                    <div class="overlap-group2">
+                        <div class="rectangle-33"></div>
+                        <div class="rectangle-34"></div>
+                        <h1 class="title">Primo piatto di pasta</h1>
+                        <div class="text-1 text-2">3/5</div>
+                        <p class="lorem-ipsum-dolor-si">
+                            <span class="span0">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                eirmod tempor invidunt ut labore
+                                et dolore ….<br /></span><span class="span1">Pomodoro, cipolla, Carne, Olive</span>
+                        </p>
+                        <img class="icon-star" src="img/path-11-1@1x.png" alt="icon-star" />
+                        <div class="group-11">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-12">
+                            <div class="glutine-1 glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-13">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="price">19.50€</div>
+                        <img class="line-5 line" src="img/line-1-1@1x.png" alt="Line 5" />
+                        <div class="mask-group-8 mask-group">
+                            <div class="leaf-svgrepo-com">
+                                <div class="overlap-group1">
+                                    <img class="path-34" src="img/path-17-1@1x.png" alt="Path 34" />
+                                    <div class="group-14">
+                                        <div class="path-container">
+                                            <img class="path-35" src="img/path-35-1@1x.png" alt="Path 35" />
+                                            <img class="path-36" src="img/path-19-1@1x.png" alt="Path 36" />
+                                        </div>
+                                        <img class="path-37" src="img/path-20-1@1x.png" alt="Path 37" />
+                                    </div>
+                                    <img class="path-38" src="img/path-21-1@1x.png" alt="Path 38" />
+                                    <img class="path-39" src="img/path-22-1@1x.png" alt="Path 39" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text text-2">… +3</div>
+                        <div class="rectangle-28"></div>
+                        <div class="aggiunto">Aggiunto</div>
+                        <div class="ellipse-2"></div>
+                        <div class="mask-group-10 mask-group">
+                            <div class="cart-add-svgrepo-com">
+                                <img class="primary" src="img/primary-11@1x.png" alt="primary" />
+                                <div class="primary-upstroke-container">
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                </div>
+                            </div>
+                        </div>
+                        <img class="primary-1" src="img/primary-18@1x.png" alt="primary" />
+                    </div>
+                    <div class="text-4 text-2">1|</div>
+                    <div class="rectangle-35"></div>
+                    <img class="primary-2" src="img/primary-15@1x.png" alt="primary" />
+                </div>
+            </div>
+            <div class="cards-items saturday salad vegetarian celery show-all">
+                <div class="overlap-group4">
+                    <img class="pasta-carbonara-reci"
+                        src="img/pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7f-1@1x.png"
+                        alt="pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7fad1d157" />
+                    <div class="overlap-group2">
+                        <div class="rectangle-33"></div>
+                        <div class="rectangle-34"></div>
+                        <h1 class="title">Primo piatto di pasta</h1>
+                        <div class="text-1 text-2">3/5</div>
+                        <p class="lorem-ipsum-dolor-si">
+                            <span class="span0">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                eirmod tempor invidunt ut labore
+                                et dolore ….<br /></span><span class="span1">Pomodoro, cipolla, Carne, Olive</span>
+                        </p>
+                        <img class="icon-star" src="img/path-11-1@1x.png" alt="icon-star" />
+                        <div class="group-11">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-12">
+                            <div class="glutine-1 glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="group-13">
+                            <div class="glutine glutine-2 ptsans-normal-regent-gray-15px">GLUTINE</div>
+                        </div>
+                        <div class="price">19.50€</div>
+                        <img class="line-5 line" src="img/line-1-1@1x.png" alt="Line 5" />
+                        <div class="mask-group-8 mask-group">
+                            <div class="leaf-svgrepo-com">
+                                <div class="overlap-group1">
+                                    <img class="path-34" src="img/path-17-1@1x.png" alt="Path 34" />
+                                    <div class="group-14">
+                                        <div class="path-container">
+                                            <img class="path-35" src="img/path-35-1@1x.png" alt="Path 35" />
+                                            <img class="path-36" src="img/path-19-1@1x.png" alt="Path 36" />
+                                        </div>
+                                        <img class="path-37" src="img/path-20-1@1x.png" alt="Path 37" />
+                                    </div>
+                                    <img class="path-38" src="img/path-21-1@1x.png" alt="Path 38" />
+                                    <img class="path-39" src="img/path-22-1@1x.png" alt="Path 39" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text text-2">… +3</div>
+                        <div class="rectangle-28"></div>
+                        <div class="aggiunto">Aggiunto</div>
+                        <div class="ellipse-2"></div>
+                        <div class="mask-group-10 mask-group">
+                            <div class="cart-add-svgrepo-com">
+                                <img class="primary" src="img/primary-11@1x.png" alt="primary" />
+                                <div class="primary-upstroke-container">
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                    <img class="primary-upstroke" src="img/primary-upstroke-10@1x.png"
+                                        alt="primary-upstroke" />
+                                </div>
+                            </div>
+                        </div>
+                        <img class="primary-1" src="img/primary-18@1x.png" alt="primary" />
+                    </div>
+                    <div class="text-4 text-2">1|</div>
+                    <div class="rectangle-35"></div>
+                    <img class="primary-2" src="img/primary-15@1x.png" alt="primary" />
+                </div>
+            </div>
+            <!-- <div class="cards-items lunch salad vegetarian very-spicy peanuts sesame-seeds gluten show-all ">lunch salad
+                vegetarian very-spicy Peanuts
+                Sesame-seeds Gluten</div>
+            <div class="cards-items saturday drink vegan gluten mustard lupin show-all">saturday drink vegan Gluten
+                Mustard Lupin
+            </div>
+            <div class="cards-items monday salad meat gluten soya crustaceans show-all">monday salad meat Gluten Soya
+                Crustaceans
+            </div>
+            <div class="cards-items dinner side vegetarian gluten nuts celery show-all">dinner side vegetarian Gluten
+                Nuts Celery
+            </div>
+            <div class="cards-items lunch main meat sesame-seeds lupin molluscs peanuts show-all">lunch main meat
+                Sesame-seeds
+                Lupin Molluscs Peanuts</div>
+            <div class="cards-items saturday salad meat peanuts mustard eggs show-all">saturday salad meat Peanuts
+                Mustard Eggs
+            </div>
+            <div class="cards-items monday dessert vegetarian gluten crustaceans mustard show-all">monday dessert
+                vegetarian
+                Gluten Crustaceans Mustard</div>
+            <div class="cards-items dinner main vegan gluten sesame-seeds mustard show-all">dinner main vegan Gluten
+                Sesame-seeds
+                Mustard</div>
+            <div class="cards-items lunch side meat gluten eggs celery">lunch side meat Gluten Eggs Celery</div>
+            <div class="cards-items saturday drink vegetarian nuts gluten crustaceans show-all">saturday drink
+                vegetarian Nuts
+                Gluten Crustaceans</div>
+            <div class="cards-items monday salad vegetarian gluten nuts celery show-all">monday salad vegetarian Gluten
+                Nuts
+                Celery</div>
+            <div class="cards-items dinner side vegan peanuts sesame-seeds lupin fish show-all">dinner side vegan
+                Peanuts
+                Sesame-seeds Lupin Fish</div>
+            <div class="cards-items lunch main meat celery eggs mustard show-all">lunch main meat Celery Eggs Mustard
+            </div>
+            <div class="cards-items saturday dessert vegetarian gluten nuts peanuts">saturday dessert vegetarian Gluten
+                Nuts Peanuts</div>
+            <div class="cards-items monday side vegetarian gluten crustaceans sesame-seeds show-all">monday side
+                vegetarian
+                Gluten Crustaceans Sesame-seeds</div>
+            <div class="cards-items dinner main meat peanuts gluten celery show-all">dinner main meat Peanuts Gluten
+                Celery</div>
+            <div class="cards-items lunch salad vegan gluten lupin mustard soya show-all">lunch salad vegan Gluten Lupin
+                Mustard
+                Soya</div>
+            <div class="cards-items saturday drink vegetarian eggs peanuts sesame-seeds crustaceans show-all">saturday
+                drink
+                vegetarian Eggs Peanuts Sesame-seeds Crustaceans</div>
+            <div class="cards-items monday salad meat peanuts mustard crustaceans show-all">monday salad meat Peanuts
+                Mustard
+                Crustaceans</div>
+            <div class="cards-items dinner dessert vegetarian gluten sesame-seeds lupin soya show-all">dinner dessert
+                vegetarian
+                Gluten Sesame-seeds Lupin Soya</div>
+            <div class="cards-items lunch main vegan gluten nuts celery crustaceans show-all">lunch main vegan Gluten
+                Nuts Celery
+                Crustaceans</div>
+            <div class="cards-items saturday side meat gluten sesame-seeds peanuts fish show-all">saturday side meat
+                Gluten
+                Sesame-seeds Peanuts Fish</div>
+            <div class="cards-items monday drink vegetarian peanuts mustard eggs lupin show-all">monday drink vegetarian
+                Peanuts
+                Mustard Eggs Lupin</div>
+            <div class="cards-items dinner main vegan gluten soya celery lupin show-all">dinner main vegan Gluten Soya
+                Celery
+                Lupin</div>
+            <div class="cards-items lunch side vegetarian peanuts gluten crustaceans sesame-seeds show-all">lunch side
+                vegetarian
+                Peanuts Gluten Crustaceans Sesame-seeds</div>
+            <div class="cards-items saturday salad meat gluten eggs nuts show-all">saturday salad meat Gluten Eggs Nuts
+            </div>
+            <div class="cards-items monday salad meat gluten show-all">monday salad meat Gluten</div>
+            <div class="cards-items dinner starter vegetarian celery show-all">dinner starter vegetarian Celery</div>
+            <div class="cards-items saturday side vegan eggs show-all">saturday side vegan Eggs</div>
+            <div class="cards-items monday main vegetarian fish show-all">monday main vegetarian Fish</div>
+            <div class="cards-items lunch side spicy lupin show-all">lunch side spicy Lupin</div>
+            <div class="cards-items saturday salad vegetarian gluten show-all">saturday salad vegetarian Gluten</div>
+            <div class="cards-items monday starter meat gluten show-all">monday starter meat Gluten</div>
+            <div class="cards-items dinner drink spicy gluten show-all">dinner drink spicy Gluten</div>
+            <div class="cards-items lunch main vegan gluten show-all">lunch main vegan Gluten</div>
+            <div class="cards-items saturday drink vegetarian gluten show-all">saturday drink vegetarian Gluten</div>
+            <div class="cards-items monday starter meat gluten show-all">monday starter meat Gluten</div>
+            <div class="cards-items dinner salad vegan gluten show-all">dinner salad vegan Gluten</div>
+            <div class="cards-items lunch side spicy gluten show-all">lunch side spicy Gluten</div>
+            <div class="cards-items monday main vegan gluten show-all"></div> -->
+        </div>
+
+    </div><!-- non commentare questo div -->
+
+    <script src="./js/js.js"></script>
+    <script src="./js/isotope.js"></script>
+</body>
+
+</html>

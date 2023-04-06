@@ -2,8 +2,8 @@ $(document).ready(function() {
   var filter = ["","","","","",[]];
   mostraCards(filter, []); 
   $('.seleziona-un-altro-menu').change(function() {
-    var selectedValue = $(this).val(); // recupera il valore selezionato dall'utente
-    filter[0] = selectedValue; // aggiorna il valore "menu" nell'array filter
+    var selectedMenu = $(this).val(); // recupera il valore selezionato dall'utente
+    filter[0] = selectedMenu; // aggiorna il valore "menu" nell'array filter
     mostraCards(filter, []); 
     // alert(filter)
   });
@@ -22,6 +22,75 @@ $(document).ready(function() {
     // alert(filter)
   });
 
+  $("#spicy").on("input", function() {
+    var spiceness = $(this).val(); // ottieni il valore del range
+    
+    // aggiorna l'array filter in base al valore del range
+    switch (spiceness) {
+      case "0":
+        filter[3] = "no-spicy";
+        break;
+      case "4":
+        filter[3] = "slightly-spicy";
+        break;
+      case "8":
+        filter[3] = "show-all-spicy";
+        break;
+      case "12":
+        filter[3] = "spicy";
+        break;
+        case "16":
+        filter[3] = "very-spicy";
+        break;
+      default:
+        filter[3] = "";
+        break;
+    }
+    
+    // mostra le cards corrispondenti al nuovo filtro
+    mostraCards(filter, []);
+  }); 
+
+  $("#calories").on("input", function() {
+    var value = $(this).val(); // ottieni il valore del range
+    
+    // aggiorna l'array filter in base al valore del range
+    switch (value) {
+      case "0":
+        filter[4] = "no-fat";
+        break;
+      case "4":
+        filter[4] = "low-fat";
+        break;
+      case "8":
+        filter[4] = "show-all-calories";
+        break;
+      case "12":
+        filter[4] = "fat";
+        break;
+        case "16":
+        filter[4] = "very-fat";
+        break;
+      default:
+        filter[4] = "";
+        break;
+    }
+    
+    // mostra le cards corrispondenti al nuovo filtro
+    mostraCards(filter, []);
+  }); 
+
+        
+  $(".remove-all").click(function() {
+    // Svuota l'ultimo elemento dell'array "filter"
+    filter[5] = [];
+    $(".element-to-hide").hide();
+    $("input[type='checkbox']").prop("checked", false);
+    mostraCards(filter, []);
+
+  });
+        
+    
   $('input[type="checkbox"]').change(function() {
     var allergeni = [];
     $('input[type="checkbox"]:checked').each(function() {
@@ -41,6 +110,7 @@ $(document).ready(function() {
     // Filtra le cards da mostrare
     var cardsToShow = cards.filter(function() {
       var classes = $(this).attr('class').split(' ');
+      
       var match = true;
   
       for (var i = 0; i < 5; i++) {

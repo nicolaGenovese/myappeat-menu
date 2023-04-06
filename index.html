@@ -50,7 +50,6 @@
                 <div>
                     <p class="description-menu">
                         Lorem ipsum dolor sit amet,
-
                     </p>
                 </div>
             </div>
@@ -71,14 +70,14 @@
 
             <a id="starter" href="#" class="course-button">
                 <span class="course-icon">
-                    <img src="./img/main-dish.png" alt="Logo">
+                    <img src="./img/vegetable.png" alt="Logo">
                 </span>
                 <span class="course-text ptsans-bold-regent-gray-24px">Starters</span>
             </a>
 
             <a id="main" href="#" class="course-button">
                 <span class="course-icon">
-                    <img src="./img/main-dish.png" alt="Logo">
+                    <img src="./img/hot.png" alt="Logo">
                 </span>
                 <span class="course-text ptsans-bold-regent-gray-24px ">Mains</span>
             </a>
@@ -126,17 +125,47 @@
         <a href="#" id="vegan" class="button"><span class="icon-vegan"></span></a>
         <a href="#" id="vegetarian" class="button"><span class="icon-vegetarian"></span></a>
         <a href="#" id="meat" class="button"><span class="icon-meat"></span></a>
+        <span>
+            <input class="spicy-range-bar-style" type="range" id="spicy" name="spicy" min="0" max="16" step="4" list="spicy-values" >
+            <label for="calories">Spicy</label>
+            <datalist id="spicy-values">
+                <option class="spicy-scale" value="0" label=""></option>
+                <option class="spicy-scale" value="4" label=""></option>
+                <option class="spicy-scale" value="8" label=""></option>
+                <option class="spicy-scale" value="12" label=""></option>
+                <option class="spicy-scale" value="16" label=""></option>
+              </datalist>
+        </span>
+        <script>
+            // Imposta il valore di default del range a 0
+            $("#spicy").val(8);
+        </script>
+        <span>
+            <input class="calories-range-bar-style" type="range" id="calories" name="calories" min="0" max="16" step="4" list="calories-values">
+            <label for="calories">Calories</label>
+            <datalist id="calories-values">
+                <option class="spicy-scale" value="0" label=""></option>
+                <option class="spicy-scale" value="4" label=""></option>
+                <option class="spicy-scale" value="8" label=""></option>
+                <option class="spicy-scale" value="12" label=""></option>
+                <option class="spicy-scale" value="16" label=""></option>
+              </datalist>
+        </span>
+        <script>
+            // Imposta il valore di default del range a 0
+            $("#calories").val(8);
+        </script>
     </div>
-<script>
-    $(document).ready(function() {
-  $('.button span').click(function() {
-    // Rimuovi la classe "active" da tutti i link
-    $('.button span').removeClass('active');
-    // Aggiungi la classe "active" al link cliccato
-    $(this).addClass('active');
-  });
-});
-</script>
+    <script>
+        $(document).ready(function () {
+            $('.button span').click(function () {
+                // Rimuovi la classe "active" da tutti i link
+                $('.button span').removeClass('active');
+                // Aggiungi la classe "active" al link cliccato
+                $(this).addClass('active');
+            });
+        });
+    </script>
 
     <div class="course-title-container">
         <div class="course-title-line" style="flex-grow: 4">
@@ -164,71 +193,62 @@
         </div>
         <div id="Celery-label" class="filter-list-item element-to-hide">
             <input type="checkbox" id="Celery-checkbox">
-            <label for="Celery-checkbox"></label><a>Celery</a>
+            <label class="checkbox-style" for="Celery-checkbox"></label><a>Celery</a>
         </div>
         <div id="Gluten-label" class="filter-list-item element-to-hide">
             <input type="checkbox" id="Gluten-checkbox">
-            <label for="Gluten-checkbox"></label><a>Gluten</a>
+            <label class="checkbox-style" for="Gluten-checkbox"></label><a>Gluten</a>
         </div>
         <div id="Crustaceans-label" class="filter-list-item element-to-hide">
             <input type="checkbox" id="Crustaceans-checkbox">
-            <label for="Crustaceans-checkbox"></label><a>Crustaceans</a>
+            <label class="checkbox-style" for="Crustaceans-checkbox"
+                for="Crustaceans-checkbox"></label><a>Crustaceans</a>
         </div>
         <div id="Eggs-label" class="filter-list-item element-to-hide">
             <input type="checkbox" id="Eggs-checkbox">
-            <label for="Eggs-checkbox"></label><a>Eggs</a>
+            <label class="checkbox-style" for="Eggs-checkbox"></label><a>Eggs</a>
         </div>
         <div id="Fish-label" class="filter-list-item element-to-hide">
             <input type="checkbox" id="Fish-checkbox">
-            <label for="Fish-checkbox"></label><a>Fish</a>
+            <label class="checkbox-style" for="Fish-checkbox"></label><a>Fish</a>
         </div>
         <div id="Lupin-label" class="filter-list-item element-to-hide">
             <input type="checkbox" id="Lupin-checkbox">
-            <label for="Lupin-checkbox"></label><a>Lupin</a>
+            <label class="checkbox-style" for="Lupin-checkbox"></label><a>Lupin</a>
         </div>
         <div id="Milk-label" class="filter-list-item element-to-hide">
             <input type="checkbox" id="Milk-checkbox">
-            <label for="Milk-checkbox"></label><a>Milk</a>
+            <label class="checkbox-style" for="Milk-checkbox"></label><a>Milk</a>
         </div>
         <div id="Molluscs-label" class="filter-list-item element-to-hide">
             <input type="checkbox" id="Molluscs-checkbox">
-            <label for="Molluscs-checkbox"></label><a>Molluscs</a>
+            <label class="checkbox-style" for="Molluscs-checkbox"></label><a>Molluscs</a>
         </div>
         <div id="Mustard-label" class="filter-list-item element-to-hide">
             <input type="checkbox" id="Mustard-checkbox">
-            <label for="Mustard-checkbox"></label><a>Mustard</a>
+            <label class="checkbox-style" for="Mustard-checkbox"></label><a>Mustard</a>
         </div>
         <div id="Soya-label" class="filter-list-item element-to-hide">
             <input type="checkbox" id="Soya-checkbox">
-            <label for="Soya-checkbox"></label><a>Soya</a>
+            <label class="checkbox-style" for="Soya-checkbox"></label><a>Soya</a>
         </div>
         <div id="Sesame-seeds-label" class="filter-list-item element-to-hide">
             <input type="checkbox" id="Sesame-seeds-checkbox">
-            <label for="Sesame-seeds-checkbox"></label><a>Sesame-seeds</a>
+            <label class="checkbox-style" for="Sesame-seeds-checkbox"></label><a>Sesame-seeds</a>
         </div>
         <div id="Peanuts-label" class="filter-list-item element-to-hide">
             <input type="checkbox" id="Peanuts-checkbox">
-            <label for="Peanuts-checkbox"></label><a>Peanuts</a>
+            <label class="checkbox-style" for="Peanuts-checkbox"></label><a>Peanuts</a>
         </div>
         <div id="Nuts-label" class="filter-list-item element-to-hide">
             <input type="checkbox" id="Nuts-checkbox">
-            <label for="Nuts-checkbox"></label><a>Nuts</a>
+            <label class="checkbox-style" for="Nuts-checkbox"></label><a>Nuts</a>
         </div>
         <div id="Sulphur-dioxide-label" class="filter-list-item element-to-hide">
             <input type="checkbox" id="Sulphur-dioxide-checkbox">
-            <label for="Sulphur-dioxide-checkbox"></label><a>Sulphur-dioxide</a>
+            <label class="checkbox-style" for="Sulphur-dioxide-checkbox"></label><a>Sulphur-dioxide</a>
         </div>
     </div>
-
-    <!-- clear-all -->
-    <script>
-        $(document).ready(function () {
-            $('.remove-all').on('click', function () {
-                $('input[type="checkbox"]').prop('checked', false);
-                $('.element-to-hide').hide();
-            });
-        });
-    </script>
 
     <!-- sincronizza i due checkbox -->
     <script>
@@ -286,7 +306,7 @@
 
                 <tr>
                     <td><input type="checkbox" id="celery">
-                        <label for="celery"></label>
+                        <label class="checkbox-style" for="celery"></label>
                     </td>
                     <td>Celery</td>
 
@@ -294,7 +314,7 @@
                 <tr>
                     <td>
                         <input type="checkbox" id="gluten">
-                        <label for="gluten"></label>
+                        <label class="checkbox-style" for="gluten"></label>
                     </td>
                     <td>Gluten</td>
 
@@ -302,7 +322,7 @@
                 <tr>
                     <td>
                         <input type="checkbox" id="crustaceans">
-                        <label for="crustaceans"></label>
+                        <label class="checkbox-style" for="crustaceans"></label>
                     </td>
                     <td>Crustaceans</td>
 
@@ -310,7 +330,7 @@
                 <tr>
                     <td>
                         <input type="checkbox" id="eggs">
-                        <label for="eggs"></label>
+                        <label class="checkbox-style" for="eggs"></label>
                     </td>
                     <td>Eggs</td>
 
@@ -318,7 +338,7 @@
                 <tr>
                     <td>
                         <input type="checkbox" id="fish">
-                        <label for="fish"></label>
+                        <label class="checkbox-style" for="fish"></label>
                     </td>
                     <td>Fish</td>
 
@@ -326,7 +346,7 @@
                 <tr>
                     <td>
                         <input type="checkbox" id="lupin">
-                        <label for="lupin"></label>
+                        <label class="checkbox-style" for="lupin"></label>
                     </td>
                     <td>Lupin</td>
 
@@ -334,7 +354,7 @@
                 <tr>
                     <td>
                         <input type="checkbox" id="milk">
-                        <label for="milk"></label>
+                        <label class="checkbox-style" for="milk"></label>
                     </td>
                     <td>Milk</td>
 
@@ -342,7 +362,7 @@
                 <tr>
                     <td>
                         <input type="checkbox" id="molluscs">
-                        <label for="molluscs"></label>
+                        <label class="checkbox-style" for="molluscs"></label>
                     </td>
                     <td>Molluscs</td>
 
@@ -350,7 +370,7 @@
                 <tr>
                     <td>
                         <input type="checkbox" id="mustard">
-                        <label for="mustard"></label>
+                        <label class="checkbox-style" for="mustard"></label>
                     </td>
                     <td>Mustard</td>
 
@@ -358,7 +378,7 @@
                 <tr>
                     <td>
                         <input type="checkbox" id="nuts">
-                        <label for="nuts"></label>
+                        <label class="checkbox-style" for="nuts"></label>
                     </td>
                     <td>Nuts</td>
 
@@ -366,7 +386,7 @@
                 <tr>
                     <td>
                         <input type="checkbox" id="peanuts">
-                        <label for="peanuts"></label>
+                        <label class="checkbox-style" for="peanuts"></label>
                     </td>
                     <td>Peanuts</td>
 
@@ -374,7 +394,7 @@
                 <tr>
                     <td>
                         <input type="checkbox" id="sesame-seeds">
-                        <label for="sesame-seeds"></label>
+                        <label class="checkbox-style" for="sesame-seeds"></label>
                     </td>
                     <td>Sesame seeds</td>
 
@@ -383,7 +403,7 @@
                 <tr>
                     <td>
                         <input type="checkbox" id="soya">
-                        <label for="soya"></label>
+                        <label class="checkbox-style" for="soya"></label>
                     </td>
                     <td>Soya</td>
 
@@ -392,7 +412,7 @@
                 <tr>
                     <td>
                         <input type="checkbox" id="sulphur-dioxide">
-                        <label for="sulphur-dioxide"></label>
+                        <label class="checkbox-style" for="sulphur-dioxide"></label>
                     </td>
                     <td>Sulphur dioxide</td>
 
@@ -400,9 +420,9 @@
             </table>
 
         </div>
-
+        <script src="./js/randomCards.js"></script>
         <div class="dropdown-cards-container">
-            <div class="cards-items saturday side vegan gluten show-all">
+            <!-- <div class="cards-items saturday side vegan gluten show-all">
 
                 <div class="overlap-group5">
                     <img class="a53959eceaed76a3a3ada8f4fde15924" src="img/a53959eceaed76a3a3ada8f4fde15924-1@1x.png"
@@ -1812,73 +1832,51 @@
                     <div class="rectangle-35"></div>
                     <img class="primary-2" src="img/primary-15@1x.png" alt="primary" />
                 </div>
-            </div>
-
+            </div> -->
+            <!-- <div class="cards-items lunch salad vegetarian show-all-spicy very-spicy peanuts sesame-seeds gluten show-all ">lunch salad vegetarian show-all-spicy very-spicy peanuts sesame-seeds gluten show-all </div>
+            <div class="cards-items saturday drink vegan show-all-spicy gluten mustard lupin show-all">saturday drink vegan show-all-spicy gluten mustard lupin show-all</div>
+            <div class="cards-items monday salad meat show-all-spicy gluten soya crustaceans show-all">monday salad meat show-all-spicy gluten soya crustaceans show-all</div>
+            <div class="cards-items dinner side vegetarian show-all-spicy gluten nuts celery show-all">dinner side vegetarian show-all-spicy gluten nuts celery show-all</div>
+            <div class="cards-items lunch main meat show-all-spicy sesame-seeds lupin molluscs peanuts show-all">lunch main meat show-all-spicy sesame-seeds lupin molluscs peanuts show-all</div>
+            <div class="cards-items saturday salad meat show-all-spicy peanuts mustard eggs show-all">saturday salad meat show-all-spicy peanuts mustard eggs show-all</div>
+            <div class="cards-items monday dessert vegetarian show-all-spicy gluten crustaceans mustard show-all">monday dessert vegetarian show-all-spicy gluten crustaceans mustard show-all</div>
+            <div class="cards-items dinner main vegan show-all-spicy gluten sesame-seeds mustard show-all">dinner main vegan show-all-spicy gluten sesame-seeds mustard show-all</div>
+            <div class="cards-items lunch side meat show-all-spicy  gluten eggs celery">lunch side meat Gluten Eggs Celery</div>
+            <div class="cards-items saturday drink vegetarian nuts gluten crustaceans show-all">saturday drink vegetarian nuts gluten crustaceans show-all</div>
+            <div class="cards-items monday salad vegetarian show-all-spicy gluten nuts celery show-all">monday salad vegetarian show-all-spicy gluten nuts celery show-all</div>
+            <div class="cards-items dinner side vegan show-all-spicy peanuts sesame-seeds lupin fish show-all">dinner side vegan show-all-spicy peanuts sesame-seeds lupin fish show-all</div>
+            <div class="cards-items lunch main meat show-all-spicy celery eggs mustard show-all">lunch main meat show-all-spicy celery eggs mustard show-all</div>
+            <div class="cards-items saturday dessert vegetarian show-all-spicy gluten nuts peanuts">saturday dessert vegetarian show-all-spicy gluten nuts peanuts</div>
+            <div class="cards-items monday side vegetarian show-all-spicy gluten crustaceans sesame-seeds show-all">cards-items monday side vegetarian show-all-spicy gluten crustaceans sesame-seeds show-all</div>
+            <div class="cards-items dinner main meat show-all-spicy peanuts gluten celery show-all">dinner main meat show-all-spicy peanuts gluten celery show-all</div>
+            <div class="cards-items lunch salad vegan show-all-spicy gluten lupin mustard soya show-all">lunch salad vegan show-all-spicy gluten lupin mustard soya show-all</div>
+            <div class="cards-items saturday drink vegetarian show-all-spicy eggs peanuts sesame-seeds crustaceans show-all">saturday drink vegetarian show-all-spicy eggs peanuts sesame-seeds crustaceans show-all</div>
+            <div class="cards-items monday salad meat show-all-spicy peanuts mustard crustaceans show-all">monday salad meat show-all-spicy peanuts mustard crustaceans show-all</div>
+            <div class="cards-items dinner dessert vegetarian show-all-spicy gluten sesame-seeds lupin soya show-all">dinner dessert vegetarian show-all-spicy gluten sesame-seeds lupin soya show-all</div>
+            <div class="cards-items lunch main vegan show-all-spicy gluten nuts celery crustaceans show-all">lunch main vegan show-all-spicy gluten nuts celery crustaceans show-all</div>
+            <div class="cards-items saturday side meat show-all-spicy gluten sesame-seeds peanuts fish show-all">saturday side meat show-all-spicy gluten sesame-seeds peanuts fish show-all</div>
+            <div class="cards-items monday drink vegetarian show-all-spicy peanuts mustard eggs lupin show-all">monday drink vegetarian show-all-spicy peanuts mustard eggs lupin show-all</div>
+            <div class="cards-items dinner main vegan show-all-spicy gluten soya celery lupin show-all">dinner main vegan show-all-spicy gluten soya celery lupin show-all</div>
+            <div class="cards-items lunch side vegetarian show-all-spicy peanuts gluten crustaceans sesame-seeds show-all">lunch side vegetarian show-all-spicy peanuts gluten crustaceans sesame-seeds show-all</div>
+            <div class="cards-items saturday salad meat show-all-spicy gluten eggs nuts show-all">saturday salad meat show-all-spicy gluten eggs nuts show-all</div>
+            <div class="cards-items monday salad meat show-all-spicy gluten show-all">monday salad meat Gluten</div>
+            <div class="cards-items dinner starter vegetarian show-all-spicy celery show-all">dinner starter vegetarian Celery</div>
+            <div class="cards-items saturday side vegan show-all-spicy eggs show-all">saturday side vegan Eggs</div>
+            <div class="cards-items monday main vegetarian show-all-spicy fish show-all">monday main vegetarian Fish</div>
+            <div class="cards-items lunch side spicy lupin show-all">lunch side spicy Lupin</div>
+            <div class="cards-items saturday salad vegetarian show-all-spicy gluten show-all">saturday salad vegetarian Gluten</div>
+            <div class="cards-items monday starter meat show-all-spicy gluten show-all">monday starter meat Gluten</div>
+            <div class="cards-items dinner drink vegan show-all-spicy spicy gluten show-all">dinner drink spicy Gluten</div>
+            <div class="cards-items lunch main vegan show-all-spicy gluten show-all">lunch main vegan Gluten</div>
+            <div class="cards-items saturday drink vegetarian show-all-spicy gluten show-all">saturday drink vegetarian Gluten</div>
+            <div class="cards-items monday starter meat show-all-spicy gluten show-all">monday starter meat Gluten</div>
+            <div class="cards-items dinner salad vegan show-all-spicy gluten show-all">dinner salad vegan show-all-spicy gluten show-all</div>
+            <div class="cards-items lunch side meat show-all-spicy spicy gluten show-all">lunch side meat show-all-spicy spicy gluten show-all</div>
+            <div class="cards-items monday main vegan show-all-spicy gluten show-all">monday main vegan show-all-spicy gluten show-all</div> -->
         </div>
 
-    </div>
-            <!-- <div class="cards-items lunch salad vegetarian peanuts sesame-seeds gluten">lunch salad vegetarian Peanuts
-                Sesame-seeds Gluten</div>
-            <div class="cards-items saturday drink vegan gluten mustard lupin">saturday drink vegan Gluten Mustard Lupin
-            </div>
-            <div class="cards-items monday salad meat gluten soya crustaceans">monday salad meat Gluten Soya Crustaceans
-            </div>
-            <div class="cards-items dinner side vegetarian gluten nuts celery">dinner side vegetarian Gluten Nuts Celery
-            </div>
-            <div class="cards-items lunch main meat sesame-seeds lupin molluscs peanuts">lunch main meat Sesame-seeds
-                Lupin Molluscs Peanuts</div>
-            <div class="cards-items saturday salad meat peanuts mustard eggs">saturday salad meat Peanuts Mustard Eggs
-            </div>
-            <div class="cards-items monday dessert vegetarian gluten crustaceans mustard">monday dessert vegetarian
-                Gluten Crustaceans Mustard</div>
-            <div class="cards-items dinner main vegan gluten sesame-seeds mustard">dinner main vegan Gluten Sesame-seeds
-                Mustard</div>
-            <div class="cards-items lunch side meat gluten eggs celery">lunch side meat Gluten Eggs Celery</div>
-            <div class="cards-items saturday drink vegetarian nuts gluten crustaceans">saturday drink vegetarian Nuts
-                Gluten Crustaceans</div>
-            <div class="cards-items monday salad vegetarian gluten nuts celery">monday salad vegetarian Gluten Nuts
-                Celery</div>
-            <div class="cards-items dinner side vegan peanuts sesame-seeds lupin fish">dinner side vegan Peanuts
-                Sesame-seeds Lupin Fish</div>
-            <div class="cards-items lunch main meat celery eggs mustard">lunch main meat Celery Eggs Mustard</div>
-            <div class="cards-items saturday dessert vegetarian gluten nuts peanuts">saturday dessert vegetarian Gluten
-                Nuts Peanuts</div>
-            <div class="cards-items monday side vegetarian gluten crustaceans sesame-seeds">monday side vegetarian
-                Gluten Crustaceans Sesame-seeds</div>
-            <div class="cards-items dinner main meat peanuts gluten celery">dinner main meat Peanuts Gluten Celery</div>
-            <div class="cards-items lunch salad vegan gluten lupin mustard soya">lunch salad vegan Gluten Lupin Mustard
-                Soya</div>
-            <div class="cards-items saturday drink vegetarian eggs peanuts sesame-seeds crustaceans">saturday drink
-                vegetarian Eggs Peanuts Sesame-seeds Crustaceans</div>
-            <div class="cards-items monday salad meat peanuts mustard crustaceans">monday salad meat Peanuts Mustard
-                Crustaceans</div>
-            <div class="cards-items dinner dessert vegetarian gluten sesame-seeds lupin soya">dinner dessert vegetarian
-                Gluten Sesame-seeds Lupin Soya</div>
-            <div class="cards-items lunch main vegan gluten nuts celery crustaceans">lunch main vegan Gluten Nuts Celery
-                Crustaceans</div>
-            <div class="cards-items saturday side meat gluten sesame-seeds peanuts fish">saturday side meat Gluten
-                Sesame-seeds Peanuts Fish</div>
-            <div class="cards-items monday drink vegetarian peanuts mustard eggs lupin">monday drink vegetarian Peanuts
-                Mustard Eggs Lupin</div>
-            <div class="cards-items dinner main vegan gluten soya celery lupin">dinner main vegan Gluten Soya Celery
-                Lupin</div>
-            <div class="cards-items lunch side vegetarian peanuts gluten crustaceans sesame-seeds">lunch side vegetarian
-                Peanuts Gluten Crustaceans Sesame-seeds</div>
-            <div class="cards-items saturday salad meat gluten eggs nuts">saturday salad meat Gluten Eggs Nuts</div>
-            <div class="cards-items monday salad meat gluten">monday salad meat Gluten</div>
-            <div class="cards-items dinner starter vegetarian celery">dinner starter vegetarian Celery</div>
-            <div class="cards-items saturday side vegan eggs">saturday side vegan Eggs</div>
-            <div class="cards-items monday main vegetarian fish">monday main vegetarian Fish</div>
-            <div class="cards-items lunch side spicy lupin">lunch side spicy Lupin</div>
-            <div class="cards-items saturday salad vegetarian gluten">saturday salad vegetarian Gluten</div>
-            <div class="cards-items monday starter meat gluten">monday starter meat Gluten</div>
-            <div class="cards-items dinner drink spicy gluten">dinner drink spicy Gluten</div>
-            <div class="cards-items lunch main vegan gluten">lunch main vegan Gluten</div>
-            <div class="cards-items saturday drink vegetarian gluten">saturday drink vegetarian Gluten</div>
-            <div class="cards-items monday starter meat gluten">monday starter meat Gluten</div>
-            <div class="cards-items dinner salad vegan gluten">dinner salad vegan Gluten</div>
-            <div class="cards-items lunch side spicy gluten">lunch side spicy Gluten</div>
-            <div class="cards-items monday main vegan Gluten"> -->
+    </div><!-- non commentare questo div -->
+
     <script src="./js/js.js"></script>
     <script src="./js/isotope.js"></script>
 </body>
